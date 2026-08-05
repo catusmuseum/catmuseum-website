@@ -154,15 +154,14 @@
 
     <!-- 所有攤位一覽 -->
     <section class="section">
-      <h3>📋 全部參展品牌</h3>
-      <p style="font-size:15px;color:var(--color-text-light);">以下為本次參展的所有攤位</p>
+      <h3>📋 參展品牌</h3>
+      <p style="font-size:15px;color:var(--color-text-light);">以下為本次參展的所有攤位(招募中~持續更新!)</p>
 
       <div class="vendor-grid" id="vendor-grid">
         <div class="list-empty"><div class="spin"></div>攤位名單載入中…</div>
       </div>
 
-      <p id="vendor-count" style="font-size:14px;color:var(--color-text-light);margin-top:6px;"></p>
-    </section>
+      </section>
 
     <p style="margin-top:40px;">
       <a href="index.html" class="btn">← 返回活動詳情</a>
@@ -231,7 +230,7 @@ function processData(all) {
   var commercial = all.filter(function (b) { return b.category.indexOf('商業') !== -1; });
   renderCommercial(commercial);
   renderGrid(all);
-  document.getElementById('vendor-count').textContent = '共 ' + all.length + ' 個參展品牌';
+  // 總計數不顯示給訪客看
 }
 
 // ---- CSV 解析（RFC 4180） ----
