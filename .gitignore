@@ -2,3 +2,6 @@ node_modules/
 .DS_Store
 *.log
 *.psd
+
+# 圖片已上傳到免費圖床
+images/
