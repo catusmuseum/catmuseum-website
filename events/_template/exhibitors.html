@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>參展攤商名單 - Vol.x - 貓太太的珍物館</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+.vendor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin: 30px 0; }
+.vendor-item { background: var(--color-white); border: 1px solid var(--color-border); padding: 10px 14px; font-size: 15px; text-align: center; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+    <nav class="main-nav">
+    <a href="../../index.html">首頁</a>
+    <a href="index.html" class="active">Vol.x 活動</a>
+    <a href="exhibitors.html">品牌櫥窗</a>
+<a href="../../vendor/index.html">攤商專區</a>
+    <a href="../../gallery/index.html">活動回顧</a>
+    <a href="../../about/index.html">關於我們</a>
+</nav>
+</header>
+
+<main>
+  <div class="page">
+    <h2>參展攤位名單</h2>
+    <p style="font-size:16px;color:var(--color-primary);margin-bottom:20px;">Vol.x 場地名稱</p>
+
+    <div class="vendor-grid">
+      <div class="vendor-item">【攤位名稱】</div>
+    </div>
+
+    <p style="margin-top:40px;"><a href="index.html" class="btn">← 返回活動詳情</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a> · <a href="../../about/index.html">聯絡我們</a>
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.main-nav a').forEach(function(l) {
+  if (l.href === window.location.href) l.classList.add('active');
+});
+</script>
+</body>
+</html>

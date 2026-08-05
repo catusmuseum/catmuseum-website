@@ -1,0 +1,68 @@
+// ============================================================
+// 貓太太的珍物館 — Google Sheets Web App
+// 讀取 Website_Data 分頁，輸出 JSON 供網站使用
+// ============================================================
+// 使用方式：
+// 1. 打開 Google Sheets → 擴充功能 → Apps Script
+// 2. 貼上此程式碼
+// 3. 部署 → 新增部署作業 → 網頁應用程式
+//    執行身份：我
+//    存取權限：任何人
+// 4. 複製部署網址，貼到 exhibitors.html 的 API_URL
+// ============================================================
+
+function doGet() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const sheet = ss.getSheetByName('Website_Data');
+  
+  if (!sheet) {
+    return errorOutput('Website_Data 分頁不存在');
+  }
+  
+  const data = sheet.getDataRange().getValues();
+  
+  // 第一列是表頭
+  const headers = data[0];
+  const rows = [];
+  
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const name = row[1] ? row[1].toString().trim() : '';
+    if (!name) continue; // 跳過空行
+    
+    rows.push({
+      category: row[0] ? row[0].toString().trim() : '',
+      name: name,
+      url: row[2] ? row[2].toString().trim() : '',
+      description: row[3] ? row[3].toString().trim() : '',
+      facebook: row[4] ? row[4].toString().trim() : '',
+      instagram: row[5] ? row[5].toString().trim() : '',
+      plurk: row[6] ? row[6].toString().trim() : '',
+      sort: row[7] ? parseInt(row[7]) : 999
+    });
+  }
+  
+  // 分類：商業 vs 一般
+  const result = {
+    total: rows.length,
+    updated: new Date().toISOString(),
+    commercial: rows.filter(r => r.category.indexOf('商業') !== -1),
+    general: rows.filter(r => r.category.indexOf('商業') === -1)
+  };
+  
+  return ContentService
+    .createTextOutput(JSON.stringify(result, null, 2))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function errorOutput(msg) {
+  return ContentService
+    .createTextOutput(JSON.stringify({ error: msg }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+// === 測試用（可選）：在編輯器中執行 test() 看結果 ===
+function test() {
+  const result = doGet();
+  Logger.log(result.getContent());
+}

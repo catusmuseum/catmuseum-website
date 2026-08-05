@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>品牌櫥窗 - Vol.7 台中場 - 貓太太的珍物館</title>
+<meta name="description" content="貓太太的珍物館 Vol.7 台中場品牌櫥窗 — 認識本次參展的商業品牌與所有攤位。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+/* 品牌櫥窗 - 商業攤特色卡 */
+.brand-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 30px 0;
+}
+.brand-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 30px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.brand-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.brand-card .brand-logo {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: var(--color-bg-alt);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--color-text-light);
+}
+.brand-card h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--color-heading);
+  margin-bottom: 8px;
+}
+.brand-card .brand-desc {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+/* 一般攤位 Logo 牆 */
+.vendor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin: 30px 0;
+}
+.vendor-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  font-size: 15px;
+  text-align: center;
+  transition: border-color 0.2s;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.vendor-item:hover {
+  border-color: var(--color-primary);
+}
+.vendor-item .mini-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background: var(--color-bg-alt);
+  border-radius: 50%;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--color-text-light);
+}
+.vendor-item .vendor-name {
+  color: var(--color-text);
+}
+
+/* 載入中 / 錯誤 / 空狀態 */
+.list-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-text-light);
+  font-size: 16px;
+}
+.list-empty .spin {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 768px) {
+  .brand-featured { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="main-nav">
+    <a href="../../index.html">首頁</a>
+    <a href="index.html">Vol.7 台中場</a>
+    <a href="exhibitors.html">品牌櫥窗</a>
+<a href="../../vendor/index.html">攤商專區</a>
+    <a href="../../gallery/index.html">活動回顧</a>
+    <a href="../../about/index.html">關於我們</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page">
+    <h2>品牌櫥窗</h2>
+    <p style="font-size:17px;color:var(--color-primary);margin-bottom:4px;">Vol.7 台中場</p>
+    <p style="font-size:15px;color:var(--color-text-light);margin-bottom:20px;">一起來認識本次參展的品牌吧 ✨</p>
+
+    <!-- 焦點品牌：商業攤詳細介紹 -->
+    <section class="section" style="padding-top:0;">
+      <h3>✨ 商業品牌介紹</h3>
+      <p style="font-size:15px;color:var(--color-text-light);">本次參展的商業攤位，每個品牌都有自己的獨特風格與故事</p>
+
+      <div class="brand-featured" id="commercial-list">
+        <div class="list-empty"><div class="spin"></div>商業品牌載入中…</div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 所有攤位一覽 -->
+    <section class="section">
+      <h3>📋 全部參展品牌</h3>
+      <p style="font-size:15px;color:var(--color-text-light);">以下為本次參展的所有攤位</p>
+
+      <div class="vendor-grid" id="vendor-grid">
+        <div class="list-empty"><div class="spin"></div>攤位名單載入中…</div>
+      </div>
+
+      <p id="vendor-count" style="font-size:14px;color:var(--color-text-light);margin-top:6px;"></p>
+    </section>
+
+    <p style="margin-top:40px;">
+      <a href="index.html" class="btn">← 返回活動詳情</a>
+      <a href="../../vendor/vol7.html" class="btn" style="margin-left:10px;">想成為攤主？→</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a> · <a href="../../about/index.html">聯絡我們</a>
+  </p>
+</footer>
+
+<script>
+// ============================================================
+// 攤位名單 — 資料來源（優先順序）：
+//   1. exhibitors.json（本機預先同步檔，本機開發用）
+//   2. Google Sheet 發佈到網路 CSV（上線後免登入直接讀 Google）
+// 更新 Sheets → 網站自動更新（上線時 CSV 即時，本機需跑同步腳本）
+// ============================================================
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRWOUsW30k5ZPGRrjTLLygM-1Em0Bp4SPMCaNwFng7Zlng1UDWrjwDL4DlBtJWuLV3wsopCf3Ct29su/pub?gid=1742573447&single=true&output=csv';
+const JSON_URL = './exhibitors.json';
+
+document.addEventListener('DOMContentLoaded', function () {
+  // 先試本機 JSON（無 CORS 問題），失敗就試 CSV
+  fetch(JSON_URL)
+    .then(function (r) { return r.ok ? r.json() : Promise.reject('no-json'); })
+    .then(function (data) {
+      if (data && data.all) processData(data.all);
+      else throw 'no-json';
+    })
+    .catch(function () {
+      // fallback: 從 Google CSV 讀取（上線情境）
+      fetch(CSV_URL)
+        .then(function (r) {
+          if (!r.ok) throw new Error('網路錯誤 ' + r.status);
+          return r.text();
+        })
+        .then(parseCSV)
+        .then(function (rows) {
+          var all = rows.map(function (r) {
+            return {
+              category: (r[0] || '').trim(),
+              name: (r[1] || '').trim(),
+              url: (r[2] || '').trim(),
+              description: (r[3] || '').trim(),
+              facebook: (r[4] || '').trim(),
+              instagram: (r[5] || '').trim(),
+              plurk: (r[6] || '').trim(),
+              sort: parseInt(r[7]) || 999
+            };
+          }).filter(function (b) { return b.name; });
+          processData(all);
+        })
+        .catch(function (err) { renderError('無法載入攤位名單：' + err.message); });
+    });
+});
+
+function processData(all) {
+  if (!all.length) {
+    renderError('攤位名單整理中，敬請期待 ✨');
+    return;
+  }
+  var commercial = all.filter(function (b) { return b.category.indexOf('商業') !== -1; });
+  renderCommercial(commercial);
+  renderGrid(all);
+  document.getElementById('vendor-count').textContent = '共 ' + all.length + ' 個參展品牌';
+}
+
+// ---- CSV 解析（RFC 4180） ----
+function parseCSV(text) {
+  var rows = [], current = [], field = '', inQuotes = false;
+  for (var i = 0; i < text.length; i++) {
+    var ch = text[i], next = text[i + 1];
+    if (inQuotes) {
+      if (ch === '"' && next === '"') { field += '"'; i++; }
+      else if (ch === '"') inQuotes = false;
+      else field += ch;
+    } else {
+      if (ch === '"') inQuotes = true;
+      else if (ch === ',') { current.push(field); field = ''; }
+      else if (ch === '\\n') { current.push(field); if (current.length) rows.push(current); current = []; field = ''; }
+      else if (ch !== '\\r') field += ch;
+    }
+  }
+  current.push(field);
+  if (current.length) rows.push(current);
+  rows.shift();
+  return rows;
+}
+
+// ---- 渲染 ----
+function renderCommercial(list) {
+  var el = document.getElementById('commercial-list');
+  if (!list.length) {
+    el.innerHTML = '<div class="list-empty">商業品牌資訊整理中，敬請期待 ✨</div>';
+    return;
+  }
+  el.innerHTML = list.map(function (b) {
+    return '<div class="brand-card">' +
+      '<div class="brand-logo" style="background:var(--color-bg-alt);">' +
+        '<span style="color:var(--color-text-light);">品牌 Logo</span>' +
+      '</div>' +
+      '<h3>' + esc(b.name) + '</h3>' +
+      '<p class="brand-desc">' + (b.description ? esc(b.description) : '品牌介紹撰寫中，敬請期待～') + '</p>' +
+    '</div>';
+  }).join('');
+}
+
+function renderGrid(list) {
+  var el = document.getElementById('vendor-grid');
+  if (!list.length) {
+    el.innerHTML = '<div class="list-empty">攤位名單整理中，敬請期待 ✨</div>';
+    return;
+  }
+  el.innerHTML = list.map(function (b) {
+    return '<div class="vendor-item">' +
+      '<div class="mini-logo">🏪</div>' +
+      '<span class="vendor-name">' + esc(b.name) + '</span>' +
+    '</div>';
+  }).join('');
+}
+
+function renderError(msg) {
+  document.getElementById('commercial-list').innerHTML = '<div class="list-empty">' + esc(msg) + '</div>';
+  document.getElementById('vendor-grid').innerHTML = '';
+}
+
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+document.querySelectorAll('.main-nav a').forEach(function (l) {
+  if (l.href === window.location.href) l.classList.add('active');
+});
+</script>
+</body>
+</html>

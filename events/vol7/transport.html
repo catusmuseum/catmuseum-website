@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交通資訊 - Vol.7 台中場 - 貓太太的珍物館</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+.transport-box { background: var(--color-white); border: 1px solid var(--color-border); padding: 24px; margin: 20px 0; border-radius: 4px; }
+.transport-box h3 { font-size: 18px; margin-bottom: 12px; color: var(--color-primary); }
+.transport-box p, .transport-box li { font-size: 16px; line-height: 1.8; }
+.transport-box ul { padding-left: 20px; margin: 8px 0; }
+.transport-box li { margin-bottom: 4px; }
+.address-card { background: var(--color-heading); color: white; padding: 24px; text-align: center; margin: 30px 0; border-radius: 4px; }
+.address-card h3 { color: white; font-size: 22px; margin-bottom: 8px; }
+.address-card p { font-size: 18px; opacity: 0.9; }
+.address-card .small { font-size: 14px; opacity: 0.7; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+    <nav class="main-nav">
+    <a href="../../index.html">首頁</a>
+    <a href="index.html" class="active">Vol.7 台中場</a>
+    <a href="exhibitors.html">品牌櫥窗</a>
+<a href="../../vendor/index.html">攤商專區</a>
+    <a href="../../gallery/index.html">活動回顧</a>
+    <a href="../../about/index.html">關於我們</a>
+</nav>
+</header>
+
+<main>
+  <div class="page">
+    <h2>交通資訊</h2>
+    <p style="font-size:20px;color:var(--color-primary);margin-bottom:20px;">Vol.7 2026.9.25 · 朝馬國民運動中心</p>
+
+    <div class="address-card">
+      <h3>朝馬國民運動中心</h3>
+      <p>407 台中市西屯區潮洋里朝貴路 199 號</p>
+      <p class="small">Vol.7 於 3F 綜合球場舉行</p>
+    </div>
+
+    <div class="transport-box">
+      <h3>自行開車</h3>
+      <p><strong>開車路線：</strong>由國道 1 號「中港交流道」（台灣大道出口）下交流道，往市區方向直行台灣大道，左轉黎明路二段，右轉朝馬路，再左轉朝貴路即可抵達。</p>
+      <p style="margin-top:10px;"><strong>停車場：</strong>中心設有專屬收費停車場。若車位停滿，可利用周邊的「朝馬國民運動中心公有平面停車場」或朝富路上的停車格。</p>
+    </div>
+
+    <div class="transport-box">
+      <h3>大眾交通</h3>
+      <p><strong>公車（市區客運）：</strong></p>
+      <ul>
+        <li><strong>玉成里站 / 朝馬黎明路口站：</strong>可搭乘 29、49、54、63、75、160、324、356 等路線。下車後沿朝馬路步行至朝貴路，約需 3 至 5 分鐘。</li>
+        <li><strong>朝馬轉運站：</strong>若搭乘國道客運，於「朝馬站」下車，步行約 10 至 15 分鐘即可抵達。</li>
+      </ul>
+      <p style="margin-top:10px;"><strong>捷運：</strong>距離中心最近的捷運站為綠線「市政府站」或「水湳站」，但出站後需轉乘公車（如 300 號幹線公車）至「朝馬」站再步行前往。</p>
+    </div>
+
+    <p style="margin-top:40px;"><a href="index.html" class="btn">← 返回活動詳情</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a> · <a href="../../about/index.html">聯絡我們</a>
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.main-nav a').forEach(function(l) {
+  if (l.href === window.location.href) l.classList.add('active');
+});
+</script>
+</body>
+</html>

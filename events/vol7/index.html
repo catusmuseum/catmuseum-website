@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vol.7 台中場 - 貓太太的珍物館</title>
+<meta name="description" content="貓太太的珍物館 Vol.7 台中場活動資訊、參展攤商名單、活動日程、交通資訊。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+/* 表格 - 活動流程 */
+.schedule-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+.schedule-table th, .schedule-table td { border: 1px solid var(--color-border); padding: 16px 24px; text-align: left; }
+.schedule-table th { background: var(--color-heading); color: white; font-family: var(--font-nav); font-size: 12px; letter-spacing: 1px; }
+.schedule-table tr:nth-child(even) { background: var(--color-bg-alt); }
+.schedule-table .time { font-family: var(--font-nav); font-weight: 500; white-space: nowrap; font-size: 17px; color: var(--color-primary); }
+.schedule-table td:last-child { font-size: 16px; line-height: 1.8; }
+
+/* 橫排小卡 */
+.event-nav-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 30px 0 10px;
+}
+.event-nav-cards .nav-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: 16px 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+.event-nav-cards .nav-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.event-nav-cards .nav-card .label {
+  font-family: var(--font-nav);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+.event-nav-cards .nav-card h3 {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--color-heading);
+  margin: 0 0 4px;
+  font-weight: 400;
+}
+.event-nav-cards .nav-card p {
+  font-size: 12px;
+  color: var(--color-text-light);
+  line-height: 1.4;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .event-nav-cards { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .event-nav-cards { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+    <nav class="main-nav">
+    <a href="../../index.html">首頁</a>
+    <a href="index.html" class="active">Vol.7 台中場</a>
+    <a href="exhibitors.html">品牌櫥窗</a>
+<a href="../../vendor/index.html">攤商專區</a>
+    <a href="../../gallery/index.html">活動回顧</a>
+    <a href="../../about/index.html">關於我們</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page">
+    <!-- 綠底橫幅 -->
+    <div class="page-banner">
+      <h2>Vol.7 台中場</h2>
+      <p>2026.9.25 · 朝馬國民運動中心 3F綜合球場</p>
+    </div>
+
+    <!-- 橫排小卡 -->
+    <div class="event-nav-cards">
+      <a href="visitor.html" class="nav-card">
+        <span class="label">GUIDE</span>
+        <h3>遊客須知</h3>
+        <p>購票、時程、入場規範</p>
+      </a>
+      <a href="exhibitors.html" class="nav-card">
+              <span class="label">LIST</span>
+              <h3>品牌櫥窗</h3>
+              <p>商業品牌介紹與攤位一覽</p>
+            </a>
+      <a href="raffle.html" class="nav-card">
+        <span class="label">RAFFLE</span>
+        <h3>抽獎專區</h3>
+        <p>贊助品牌好禮</p>
+      </a>
+      <a href="transport.html" class="nav-card">
+        <span class="label">ACCESS</span>
+        <h3>交通資訊</h3>
+        <p>開車、公車、捷運</p>
+      </a>
+      <a href="../../vendor/vol7.html" class="nav-card">
+        <span class="label">VENDOR</span>
+        <h3>攤位報名</h3>
+        <p>費用、尺寸、期限</p>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 活動資訊 -->
+    <section class="section">
+      <h3>活動資訊</h3>
+      <p style="font-size:17px;line-height:1.8;margin-bottom:20px;">
+        <strong>Vol.07 貓太太的珍物館 玩偶關聯交流販售會</strong>
+      </p>
+      <ul class="event-detail-list">
+        <li><span class="label">活動性質</span>DOLL（BJD、小寵、1/6 Doll、Blythe、Dollfie Dream、黏土人、棉花娃娃…等）專屬販售會</li>
+        <li><span class="label">活動日期</span>2026年9月25日</li>
+        <li><span class="label">活動地點</span>朝馬國民運動中心 3F綜合球場<br>台中市西屯區朝貴路199號</li>
+        <li><span class="label">門票價格</span>NT$250～</li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 活動流程 -->
+    <section class="section">
+      <h3>活動流程 / Event process</h3>
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>時間</th>
+            <th>事項</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time">09:00 am</td>
+            <td>社團入場開始</td>
+          </tr>
+          <tr>
+            <td class="time">09:30 am</td>
+            <td>開放線上早鳥&amp;先行票兌換成實體票</td>
+          </tr>
+          <tr>
+            <td class="time">10:20 am</td>
+            <td>先行票整隊準備入場<br><span style="font-size:14px;color:var(--color-text-light);">＊需先兌換成實體票＊</span></td>
+          </tr>
+          <tr>
+            <td class="time">10:40 am</td>
+            <td>先行票入場（社團入場截止）</td>
+          </tr>
+          <tr>
+            <td class="time">11:00 am</td>
+            <td>活動開始（開放現場購票&amp;現場購票入場）</td>
+          </tr>
+          <tr>
+            <td class="time">13:30</td>
+            <td>抽獎活動（一）</td>
+          </tr>
+          <tr>
+            <td class="time">15:00</td>
+            <td>抽獎活動（二）</td>
+          </tr>
+          <tr>
+            <td class="time">16:00</td>
+            <td>活動結束</td>
+          </tr>
+          <tr>
+            <td class="time">16:30</td>
+            <td>攤主撤場完畢</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 活動流程圖 -->
+            <div style="margin: 30px 0; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+              <div style="flex:1;min-width:280px;max-width:500px;text-align:center;">
+                <img src="../../images/202609-台中/活動流程圖-01.jpg" alt="活動流程圖 1" style="width:100%;border-radius:4px;border:1px solid var(--color-border);">
+                <p style="margin-top:6px;font-size:13px;color:var(--color-text-light);">▲ 活動流程一覽</p>
+              </div>
+              <div style="flex:1;min-width:280px;max-width:500px;text-align:center;">
+                <img src="../../images/202609-台中/活動流程圖-02.png" alt="活動流程圖 2" style="width:100%;border-radius:4px;border:1px solid var(--color-border);">
+                <p style="margin-top:6px;font-size:13px;color:var(--color-text-light);">▲ 其它注意事項</p>
+              </div>
+            </div>
+    </section>
+
+    <p style="margin-top:40px;"><a href="../../index.html" class="btn">← 返回首頁</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a> · <a href="../../about/index.html">聯絡我們</a>
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.main-nav a').forEach(function(link) {
+  if (link.href === window.location.href) {
+    link.classList.add('active');
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活動名稱 - 貓太太的珍物館</title>
+<meta name="description" content="貓太太的珍物館活動資訊。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+/* 橫排小卡 */
+.event-nav-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 30px 0 10px;
+}
+.event-nav-cards .nav-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: 16px 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+.event-nav-cards .nav-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+.event-nav-cards .nav-card .label {
+  font-family: var(--font-nav);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 4px;
+}
+.event-nav-cards .nav-card h3 {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  color: var(--color-heading);
+  margin: 0 0 4px;
+  font-weight: 400;
+}
+.event-nav-cards .nav-card p {
+  font-size: 12px;
+  color: var(--color-text-light);
+  line-height: 1.4;
+  margin: 0;
+}
+@media (max-width: 768px) {
+  .event-nav-cards { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .event-nav-cards { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+    <nav class="main-nav">
+    <a href="../../index.html">首頁</a>
+    <a href="index.html" class="active">Vol.x 活動</a>
+    <a href="exhibitors.html">品牌櫥窗</a>
+<a href="../../vendor/index.html">攤商專區</a>
+    <a href="../../gallery/index.html">活動回顧</a>
+    <a href="../../about/index.html">關於我們</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page">
+    <!-- 綠底橫幅 -->
+    <div class="page-banner">
+      <h2>Vol.x 場地名稱</h2>
+      <p>日期 · 地點</p>
+    </div>
+
+    <!-- 橫排小卡（直接接在橫幅下） -->
+    <div class="event-nav-cards">
+      <a href="visitor.html" class="nav-card">
+        <span class="label">GUIDE</span>
+        <h3>遊客須知</h3>
+        <p>購票、時程、入場規範</p>
+      </a>
+      <a href="exhibitors.html" class="nav-card">
+              <span class="label">LIST</span>
+              <h3>品牌櫥窗</h3>
+              <p>商業品牌介紹與攤位一覽</p>
+            </a>
+      <a href="raffle.html" class="nav-card">
+        <span class="label">RAFFLE</span>
+        <h3>抽獎贈品</h3>
+        <p>贊助品牌好禮</p>
+      </a>
+      <a href="transport.html" class="nav-card">
+        <span class="label">ACCESS</span>
+        <h3>交通資訊</h3>
+        <p>開車、公車、捷運</p>
+      </a>
+      <a href="../../vendor/volx.html" class="nav-card">
+        <span class="label">VENDOR</span>
+        <h3>攤位報名</h3>
+        <p>費用、尺寸、期限</p>
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 活動資訊 -->
+    <section class="section">
+      <h3>活動資訊</h3>
+      <ul class="event-detail-list">
+        <li><span class="label">活動名稱</span>貓太太的珍物館 Vol.x</li>
+        <li><span class="label">日期</span>202x.xx.xx</li>
+        <li><span class="label">地點</span>場地名稱<br>地址</li>
+      </ul>
+    </section>
+
+    <p style="margin-top:40px;"><a href="../../index.html" class="btn">← 返回首頁</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a> · <a href="../../about/index.html">聯絡我們</a>
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.main-nav a').forEach(function(l) {
+  if (l.href === window.location.href) l.classList.add('active');
+});
+</script>
+</body>
+</html>

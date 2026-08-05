@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>關於我們 - 貓太太的珍物館</title>
+<meta name="description" content="貓太太的珍物館 — 玩偶相關聯市集主辦單位。品牌故事、聯絡資訊。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin: 40px 0; }
+.logo-area { text-align: center; }
+.logo-area img { max-width: 100%; height: auto; max-height: 250px; }
+.social-links { display: flex; flex-direction: column; gap: 12px; margin: 20px 0; }
+.social-link { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border: 1px solid var(--color-border); text-decoration: none; color: var(--color-text); transition: all 0.2s; font-size: 16px; }
+.social-link:hover { border-color: var(--color-primary); background: #f0f7f5; }
+.social-link .icon { font-size: 22px; width: 30px; text-align: center; }
+.story-box { max-width: 700px; margin: 30px auto; padding: 30px 0; text-align: center; }
+.story-box p { font-size: 18px; line-height: 2.2; color: var(--color-text); }
+.story-box .poem-line { font-size: 20px; color: var(--color-heading); font-family: var(--font-heading); margin: 10px 0; }
+.story-box .tagline { font-size: 28px; color: var(--color-primary); font-family: var(--font-heading); margin: 20px 0; }
+@media (max-width: 768px) { .contact-layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+    <nav class="main-nav">
+    <a href="../index.html">首頁</a>
+    <a href="../events/vol7/index.html">Vol.7 台中場</a>
+    <a href="../events/vol7/exhibitors.html">品牌櫥窗</a>
+<a href="../vendor/index.html">攤商專區</a>
+    <a href="../gallery/index.html">活動回顧</a>
+    <a href="../about/index.html" class="active">關於我們</a>
+</nav>
+</header>
+
+<main>
+  <div class="page">
+    <h2>關於我們</h2>
+
+    <div class="story-box">
+      <p class="tagline">藏在心底發亮的 · 握在手裡珍藏的</p>
+      <p class="poem-line">來吧，你也想展現你的珍藏吧</p>
+      <p class="poem-line">來吧，你也想一窺這些珍物吧</p>
+      <p class="poem-line">像貓一般神秘的珍物館</p>
+      <p class="poem-line">為你敞開著&nbsp;&nbsp;&nbsp;&nbsp;滿足你所有的夢想</p>
+      <br>
+      <p>我們是一群喜愛各式珍稀物品的永恆少年／少女。</p>
+      <p>相信無論到了什麼年齡層，都還是揣有兒童時期一樣<br>對於收集、珍藏物品那永無盡頭的慾望。</p>
+      <p>玩具也好、雜貨骨董⋯各種稀奇的珍寶<br>不但是收藏，也想要流動更新這些珍物<br>同時也認識不少手作職人</p>
+      <p>在想著是不是有什麼方式，可以讓物品與人一起交流互動呢？</p>
+      <p>於是幾個貓奴、幾個滿腔熱血的傻瓜再一個平常不過的夜晚喧騰討論著——</p>
+      <p class="tagline">「貓太太的珍物館」誕生了。</p>
+      <p>希望舉辦一場場如夢似幻的販售交流會，促進物品與人之間的情感流動。</p>
+      <p style="font-size:16px;color:var(--color-text-light);">畢竟，<br>感情與記憶也是讓這些收藏閃閃發光的原因之一。</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2>聯絡我們</h2>
+    <div class="contact-layout">
+      <div class="logo-area">
+        <img src="../images/logo/貓太太LOGO.png" alt="貓太太的珍物館 Logo">
+      </div>
+      <div>
+        <div class="social-links">
+          <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank" class="social-link">
+            <span class="icon">f</span>
+            <span>Facebook</span>
+          </a>
+          <a href="https://www.instagram.com/catusmuseum" target="_blank" class="social-link">
+            <span class="icon">◻</span>
+            <span>Instagram @catusmuseum</span>
+          </a>
+          <a href="https://www.plurk.com/catusmuseum" target="_blank" class="social-link">
+            <span class="icon">P</span>
+            <span>Plurk @catusmuseum</span>
+          </a>
+          <a href="mailto:catusmuseum@gmail.com" class="social-link">
+            <span class="icon">✉</span>
+            <span>catusmuseum@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section class="section section-alt" style="padding:30px;border-radius:4px;">
+      <h3>活動相關詢問</h3>
+      <p style="font-size:16px;">攤商報名、活動合作等相關問題，請透過 Email 或社群平台與我們聯繫，我們將盡快回覆。</p>
+    </section>
+
+    <p style="margin-top:40px;"><a href="../index.html" class="btn">← 返回首頁</a></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a>
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('.main-nav a').forEach(function(l) {
+  if (l.href === window.location.href) l.classList.add('active');
+});
+</script>
+</body>
+</html>

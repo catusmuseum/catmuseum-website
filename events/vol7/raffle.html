@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抽獎與贊助品牌專區 - Vol.7 台中場 - 貓太太的珍物館</title>
+<meta name="description" content="貓太太的珍物館 Vol.7 抽獎活動與贊助品牌一覽。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+/* ===== 通用 ===== */
+.raffle-page h2 { font-size: 34px; font-family: var(--font-heading); }
+.raffle-page h3 { font-size: 24px; font-family: var(--font-heading); color: var(--color-primary); margin-bottom: 16px; }
+.raffle-page .section { margin: 50px 0; }
+
+/* ===== 早鳥大禮：投影片 + 文字對照 ===== */
+.grand-prize-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.slideshow-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+}
+.grand-slides { display: flex; transition: transform 0.4s ease; }
+.grand-slide { min-width: 100%; }
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: none;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--color-heading);
+  z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+}
+.slide-btn:hover { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.slide-prev { left: 8px; }
+.slide-next { right: 8px; }
+.slide-dots {
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 6px; z-index: 2;
+}
+.slide-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer; border: none;
+}
+.slide-dot.active { background: white; }
+.prize-text .prize-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.prize-text .prize-item:last-child { border-bottom: none; }
+.prize-text .sponsor-name {
+  font-family: var(--font-nav);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.prize-text .prize-desc { font-size: 15px; line-height: 1.6; color: var(--color-text); }
+.early-badge {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  font-family: var(--font-nav);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+/* ===== 抽獎券介紹圖 ===== */
+.raffle-ticket-img { text-align: center; margin: 30px 0; }
+.raffle-ticket-img img { max-width: 100%; border-radius: 4px; border: 1px solid var(--color-border); }
+
+/* ===== 贊助品牌區塊 ===== */
+.sponsor-block {
+  margin: 30px 0;
+  padding: 30px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+.sponsor-block .sponsor-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.sponsor-block .sponsor-logo { text-align: center; }
+.sponsor-block .sponsor-logo img {
+  width: 100%; max-width: 160px;
+  border-radius: 4px; border: 1px solid var(--color-border);
+  background: #f9f9f9;
+}
+.sponsor-block .sponsor-name-link {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-nav);
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.sponsor-block .sponsor-name-link:hover { text-decoration: underline; }
+.ps-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  max-width: 520px;
+}
+.ps-slides { display: flex; transition: transform 0.4s ease; }
+.ps-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  align-items: center;
+  box-sizing: border-box;
+}
+.ps-slide img { width: 100%; border-radius: 4px; border: 1px solid var(--color-border); }
+.ps-info { font-size: 15px; line-height: 1.6; }
+.ps-info .prize-label {
+  font-family: var(--font-nav);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ps-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: none;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-heading);
+  z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+}
+.ps-btn:hover { background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+.ps-prev { left: 4px; }
+.ps-next { right: 4px; }
+.ps-dots {
+  position: absolute;
+  bottom: 4px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 4px; z-index: 2;
+}
+.ps-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer; border: none;
+}
+.ps-dot.active { background: white; }
+
+@media (max-width: 768px) {
+  .grand-prize-layout { grid-template-columns: 1fr; }
+  .sponsor-block .sponsor-layout { grid-template-columns: 1fr; }
+  .sponsor-block .sponsor-logo img { max-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+    <nav class="main-nav">
+    <a href="../../index.html">首頁</a>
+    <a href="index.html" class="active">Vol.7 台中場</a>
+    <a href="exhibitors.html">品牌櫥窗</a>
+<a href="../../vendor/index.html">攤商專區</a>
+    <a href="../../gallery/index.html">活動回顧</a>
+    <a href="../../about/index.html">關於我們</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page raffle-page">
+
+    <div style="text-align:center;padding:30px 0 10px;">
+      <h2>抽獎與贊助品牌專區</h2>
+      <p style="font-size:18px;color:var(--color-primary);margin-top:8px;">Vol.7 台中場 · 2026.9.25</p>
+    </div>
+
+    <!-- ===== 早鳥抽獎券專屬：活動大禮 ===== -->
+    <section class="section">
+      <span class="early-badge">✦ 早鳥抽獎券專屬</span>
+      <h3>早鳥專屬禮</h3>
+      <p style="font-size:15px;color:var(--color-text-light);margin:0 0 20px;">
+        感謝各位參與貓太太的珍物館 Vol.7 台中場！貓太太與夥伴們準備了許多好禮，給來參與活動的同好們，一起接收好手氣 (╯✧∇✧)╯
+      </p>
+      <p style="font-size:14px;color:var(--color-text);margin:0 0 24px;">
+        早鳥票有專屬大禮、也可以參加一般票的抽獎，還有雙人、團購等不同的優惠價，同好們快揪上親朋好友一起參與吧！
+      </p>
+
+      <div class="grand-prize-layout">
+        <!-- 投影片左側 -->
+        <div class="slideshow-wrap" id="grandSlideshow">
+          <div class="grand-slides" id="grandSlides">
+            <div class="grand-slide">
+              <img src="../../images/待更新.jpg" alt="活動大禮圖片" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+            </div>
+            <div class="grand-slide">
+              <img src="../../images/202609-台中/待更新.jpg" alt="活動大禮圖片 2" style="width:100%;aspect-ratio:1/1;object-fit:cover;display:block;">
+            </div>
+          </div>
+          <button class="slide-btn slide-prev" onclick="changeGrand(-1)">‹</button>
+          <button class="slide-btn slide-next" onclick="changeGrand(1)">›</button>
+          <div class="slide-dots">
+            <span class="slide-dot active" onclick="goGrand(0)"></span>
+            <span class="slide-dot" onclick="goGrand(1)"></span>
+          </div>
+        </div>
+
+        <!-- 文字右側 -->
+        <div class="prize-text">
+          <div class="prize-item">
+            <div class="sponsor-name">偶夢 協力贊助</div>
+            <div class="prize-desc">待更新</div>
+          </div>
+          <div class="prize-item">
+            <div class="sponsor-name">待更新</div>
+            <div class="prize-desc">待更新</div>
+          </div>
+          <div class="prize-item">
+            <div class="sponsor-name">待更新</div>
+            <div class="prize-desc">待更新</div>
+          </div>
+          <div class="prize-item">
+            <div class="sponsor-name">待更新</div>
+            <div class="prize-desc">待更新</div>
+          </div>
+          <div class="prize-item">
+            <div class="sponsor-name">待更新</div>
+            <div class="prize-desc">待更新</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== 抽獎券介紹 + 圖片 ===== -->
+    <section class="section">
+      <h3>抽獎方式介紹</h3>
+      <div class="raffle-ticket-img">
+        <img src="../../images/202609-台中/抽獎券介紹.jpg" alt="抽獎券介紹">
+      </div>
+      <ul class="event-detail-list" style="margin-top:20px;">
+        <li><span class="label">抽獎券投入</span>11:00 ~ 13:50</li>
+        <li><span class="label">抽獎時間</span>14:00（一）&amp; 15:00（二）</li>
+        <li><span class="label">參加資格</span>凡購買活動門票即可獲得抽獎券</li>
+        <li><span class="label">領獎方式</span>得獎人請至本部領取獎項，唱名三次或得獎人放棄獎項，將重新抽選</li>
+      </ul>
+      <p style="font-size:14px;color:var(--color-text-light);margin-top:10px;">
+        ※ 本次抽獎券分為「早鳥抽獎券」&amp;「抽獎券」兩種，請注意要投入到對應的抽獎箱內。若投錯視為作廢。
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== 贊助品牌們 ===== -->
+    <section class="section">
+      <h3>贊助品牌與獎項</h3>
+      <p style="font-size:15px;color:var(--color-text-light);margin:0 0 10px;">
+        感謝各贊助攤商的熱情支持！您的贊助不僅讓活動更加豐富，也讓來場的民眾有機會帶回心儀的珍物。
+      </p>
+      <p style="font-size:14px;color:var(--color-text-light);margin:0 0 30px;">
+        贊助品牌持續招募中，名單將陸續更新。
+      </p>
+
+      <!-- 贊助品牌 1 - 待更新 -->
+      <div class="sponsor-block" id="sponsor-1">
+        <div class="sponsor-layout">
+          <div class="sponsor-logo">
+            <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">
+              Logo<br>（待更新）
+            </div>
+            <a href="#" class="sponsor-name-link" target="_blank">待更</a>
+          </div>
+          <div class="ps-wrap" id="ps1">
+            <div class="ps-slides" id="ps1Slides">
+              <div class="ps-slide">
+                <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">
+                  圖片<br>（待更新）
+                </div>
+                <div class="ps-info">
+                  <div class="prize-label">✦ 贊助獎項</div>
+                  <p style="font-size:15px;margin:0;">3分飾品配件組 × 1</p>
+                  <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：——</p>
+                </div>
+              </div>
+              <div class="ps-slide">
+                <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">
+                  圖片<br>（待更新）
+                </div>
+                <div class="ps-info">
+                  <div class="prize-label">✦ 贊助獎項</div>
+                  <p style="font-size:15px;margin:0;">更多獎項準備中</p>
+                  <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">敬請期待！</p>
+                </div>
+              </div>
+            </div>
+            <button class="ps-btn ps-prev" onclick="changePS('ps1',-1)">‹</button>
+            <button class="ps-btn ps-next" onclick="changePS('ps1',1)">›</button>
+            <div class="ps-dots">
+              <span class="ps-dot active" onclick="goPS('ps1',0)"></span>
+              <span class="ps-dot" onclick="goPS('ps1',1)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="divider"></div>
+
+    <p style="margin-top:30px;">
+      <a href="index.html" class="btn">← 返回活動詳情</a>
+      <a href="visitor.html" class="btn" style="margin-left:10px;">遊客須知</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a> · <a href="../../about/index.html">聯絡我們</a>
+  </p>
+</footer>
+
+<script>
+// ===== 早鳥大禮投影片 =====
+var grandCurrent = 0;
+function changeGrand(dir) { goGrand(grandCurrent + dir); }
+function goGrand(n) {
+  var total = document.querySelectorAll('#grandSlideshow .slide-dot').length;
+  if (n < 0) n = total - 1;
+  if (n >= total) n = 0;
+  grandCurrent = n;
+  document.getElementById('grandSlides').style.transform = 'translateX(-' + (n * 100) + '%)';
+  var dots = document.querySelectorAll('#grandSlideshow .slide-dot');
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === n); });
+}
+
+// ===== 贊助品牌投影片 (通用) =====
+var psState = {};
+function changePS(id, dir) {
+  if (!psState[id]) psState[id] = { current: 0 };
+  goPS(id, psState[id].current + dir);
+}
+function goPS(id, n) {
+  if (!psState[id]) psState[id] = { current: 0 };
+  var el = document.getElementById(id);
+  var total = el.querySelectorAll('.ps-dot').length;
+  if (n < 0) n = total - 1;
+  if (n >= total) n = 0;
+  psState[id].current = n;
+  el.querySelector('.ps-slides').style.transform = 'translateX(-' + (n * 100) + '%)';
+  var dots = el.querySelectorAll('.ps-dot');
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === n); });
+}
+
+// Active nav
+document.querySelectorAll('.main-nav a').forEach(function(l) {
+  if (l.href === window.location.href) l.classList.add('active');
+});
+</script>
+</body>
+</html>

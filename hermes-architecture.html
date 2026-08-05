@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hermes 架構圖 - 給晴子</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #020617; color: #e2e8f0; font-family: 'Noto Sans TC', 'JetBrains Mono', sans-serif; padding: 40px; }
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 28px; color: #22d3ee; margin-bottom: 8px; }
+.subtitle { color: #94a3b8; font-size: 14px; margin-bottom: 40px; }
+.grid { display: flex; flex-direction: column; gap: 40px; }
+.card { border: 1px solid #1e293b; border-radius: 12px; padding: 30px; background: #0f172a; }
+.card h2 { font-size: 18px; color: #22d3ee; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #1e293b; }
+.card h2 em { color: #94a3b8; font-style: normal; font-size: 13px; }
+svg { width: 100%; max-width: 1000px; display: block; margin: 0 auto; }
+text { fill: #e2e8f0; }
+.legend { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; }
+.legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #94a3b8; }
+.legend-color { width: 14px; height: 14px; border-radius: 4px; border: 1.5px solid; }
+.note { background: #1e293b; border-radius: 8px; padding: 16px; margin-top: 20px; font-size: 14px; line-height: 1.7; color: #94a3b8; }
+.note strong { color: #22d3ee; }
+.table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px; }
+.table th { text-align: left; color: #94a3b8; font-weight: 500; padding: 8px 12px; border-bottom: 1px solid #1e293b; }
+.table td { padding: 10px 12px; border-bottom: 1px solid #1e293b; line-height: 1.5; }
+.table td:first-child { color: #22d3ee; font-weight: 500; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.tag.cyan { background: rgba(34,211,238,0.15); color: #22d3ee; }
+.tag.emerald { background: rgba(52,211,153,0.15); color: #34d399; }
+.tag.violet { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.tag.amber { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.tag.rose { background: rgba(251,113,133,0.15); color: #fb7185; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Hermes 怎麼運作？</h1>
+  <p class="subtitle">晴子專用 · 用圖搞懂你跟我的關係</p>
+
+  <!-- 主要 SVG 圖 -->
+  <div class="card">
+    <h2>架構總覽 <em>（你現在在這裡）</em></h2>
+    <svg viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg">
+      <!-- 背景網格 -->
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+      </pattern>
+      <rect width="960" height="640" fill="url(#grid)"/>
+
+      <!-- 你（使用者） -->
+      <rect x="360" y="20" width="240" height="70" rx="10" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="2"/>
+      <text x="480" y="55" text-anchor="middle" font-size="20" font-weight="600" fill="#22d3ee">🧑 你（晴子）</text>
+      <text x="480" y="75" text-anchor="middle" font-size="11" fill="#94a3b8">Telegram + 終端機</text>
+
+      <!-- 箭頭：你到 default profile -->
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 Z" fill="#22d3ee"/>
+        </marker>
+        <marker id="arrow2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 Z" fill="#34d399"/>
+        </marker>
+      </defs>
+      <line x1="480" y1="90" x2="480" y2="130" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
+
+      <!-- default profile 框 -->
+      <rect x="140" y="130" width="680" height="340" rx="16" fill="rgba(6,78,59,0.15)" stroke="#34d399" stroke-width="2" stroke-dasharray="8,4"/>
+      <text x="170" y="160" font-size="16" font-weight="600" fill="#34d399">📦 default profile（生活助理晴子）</text>
+
+      <!-- 4 個核心元件 -->
+      <!-- 記憶 -->
+      <rect x="180" y="180" width="260" height="100" rx="8" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="310" y="210" text-anchor="middle" font-size="14" font-weight="600" fill="#a78bfa">🧠 記憶（Memory）</text>
+      <text x="310" y="230" text-anchor="middle" font-size="11" fill="#c4b5fd">你的個性、喜好、行事曆</text>
+      <text x="310" y="248" text-anchor="middle" font-size="11" fill="#c4b5fd">美甲工作、長期目標</text>
+      <text x="310" y="266" text-anchor="middle" font-size="11" fill="#c4b5fd">（沒有網站細節）</text>
+
+      <!-- Skills -->
+      <rect x="520" y="180" width="260" height="100" rx="8" fill="rgba(120,53,15,0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+      <text x="650" y="210" text-anchor="middle" font-size="14" font-weight="600" fill="#fbbf24">🛠️ 技能（Skills）</text>
+      <text x="650" y="230" text-anchor="middle" font-size="11" fill="#fde68a">25 個（原本 72 個）</text>
+      <text x="650" y="248" text-anchor="middle" font-size="11" fill="#fde68a">google-workspace、maps、pdf</text>
+      <text x="650" y="266" text-anchor="middle" font-size="11" fill="#fde68a">excalidraw、sketch、docx 等</text>
+
+      <!-- 對話 -->
+      <rect x="180" y="310" width="260" height="80" rx="8" fill="rgba(8,51,68,0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+      <text x="310" y="340" text-anchor="middle" font-size="14" font-weight="600" fill="#22d3ee">💬 對話（Session）</text>
+      <text x="310" y="360" text-anchor="middle" font-size="11" fill="#94a3b8">當前的對話上下文</text>
+      <text x="310" y="378" text-anchor="middle" font-size="11" fill="#94a3b8">每次重新開始就清空</text>
+
+      <!-- 工具 -->
+      <rect x="520" y="310" width="260" height="80" rx="8" fill="rgba(136,19,55,0.4)" stroke="#fb7185" stroke-width="1.5"/>
+      <text x="650" y="340" text-anchor="middle" font-size="14" font-weight="600" fill="#fb7185">🔧 工具（Tools）</text>
+      <text x="650" y="360" text-anchor="middle" font-size="11" fill="#fda4af">terminal、file、web</text>
+      <text x="650" y="378" text-anchor="middle" font-size="11" fill="#fda4af">cronjob、delegation 等</text>
+
+      <!-- 箭頭連線 -->
+      <line x1="440" y1="230" x2="520" y2="230" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="440" y1="350" x2="520" y2="350" stroke="#475569" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="310" y1="280" x2="310" y2="310" stroke="#475569" stroke-width="1"/>
+      <line x1="650" y1="280" x2="650" y2="310" stroke="#475569" stroke-width="1"/>
+
+      <!-- 箭頭到 website profile -->
+      <line x1="480" y1="470" x2="480" y2="500" stroke="#34d399" stroke-width="2" marker-end="url(#arrow2)"/>
+
+      <!-- website profile 框 -->
+      <rect x="240" y="500" width="480" height="100" rx="12" fill="rgba(6,78,59,0.1)" stroke="#34d399" stroke-width="1.5" stroke-dasharray="6,3"/>
+      <text x="480" y="530" text-anchor="middle" font-size="14" font-weight="600" fill="#34d399">📦 website profile（網站專用）</text>
+      <text x="480" y="552" text-anchor="middle" font-size="11" fill="#94a3b8">記憶：網站結構、HTML 檔案位置</text>
+      <text x="480" y="570" text-anchor="middle" font-size="11" fill="#94a3b8">技能：event-site-architecture、legacy-website-migration 等</text>
+      <text x="480" y="588" text-anchor="middle" font-size="11" fill="#6b7280">（目前沒有在用，備用）</text>
+
+      <!-- 說明文字 -->
+      <text x="480" y="470" text-anchor="middle" font-size="11" fill="#6b7280">可以切換，但目前不需要</text>
+    </svg>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-color" style="border-color:#22d3ee;background:rgba(8,51,68,0.4)"></div>使用者</div>
+      <div class="legend-item"><div class="legend-color" style="border-color:#34d399;background:rgba(6,78,59,0.15)"></div>Profile</div>
+      <div class="legend-item"><div class="legend-color" style="border-color:#a78bfa;background:rgba(76,29,149,0.4)"></div>記憶</div>
+      <div class="legend-item"><div class="legend-color" style="border-color:#fbbf24;background:rgba(120,53,15,0.3)"></div>技能</div>
+      <div class="legend-item"><div class="legend-color" style="border-color:#22d3ee;background:rgba(8,51,68,0.4)"></div>對話</div>
+      <div class="legend-item"><div class="legend-color" style="border-color:#fb7185;background:rgba(136,19,55,0.4)"></div>工具</div>
+    </div>
+  </div>
+
+  <!-- 兩個 profile 對照表 -->
+  <div class="card">
+    <h2>你兩個機器人的關係</h2>
+    <table class="table">
+      <tr>
+        <th style="width:20%"></th>
+        <th style="width:40%">晴子（default）</th>
+        <th style="width:40%">網站機器人（website）</th>
+      </tr>
+      <tr>
+        <td>目前狀態</td>
+        <td><span class="tag cyan">✅ 你正在用</span></td>
+        <td><span class="tag amber">備用，未使用</span></td>
+      </tr>
+      <tr>
+        <td>記憶內容</td>
+        <td>你的生活、行事曆、美甲、目標</td>
+        <td>網站結構、HTML 檔案路徑</td>
+      </tr>
+      <tr>
+        <td>技能數量</td>
+        <td><span class="tag emerald">25 個（輕量）</span></td>
+        <td><span class="tag emerald">25 個（同上）</span></td>
+      </tr>
+      <tr>
+        <td>對話歷史</td>
+        <td>全部生活對話 + 網站討論</td>
+        <td>空的（沒用過）</td>
+      </tr>
+      <tr>
+        <td>誰在用</td>
+        <td>你（終端機 + 晴子 Telegram）</td>
+        <td>目前沒人用</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 什麼是 memory、skill、session -->
+  <div class="card">
+    <h2>名詞解釋</h2>
+    <table class="table">
+      <tr>
+        <th style="width:16%">名詞</th>
+        <th style="width:42%">白話解釋</th>
+        <th style="width:42%">實際例子</th>
+      </tr>
+      <tr>
+        <td><span class="tag violet">記憶</span></td>
+        <td><strong>我永遠記得的東西</strong><br>存在硬碟裡，每個對話都會載入</td>
+        <td>你叫晴子、你住台灣、你經營貓太太、你 A 型<br>這些我永遠不會忘記</td>
+      </tr>
+      <tr>
+        <td><span class="tag amber">技能</span></td>
+        <td><strong>我知道怎麼用的工具說明書</strong><br>告訴我「有這個工具可以用」</td>
+        <td>google-workspace → 我知道可以讀日曆<br>maps → 我知道可以查地圖<br>pdf → 我知道可以讀 PDF 檔</td>
+      </tr>
+      <tr>
+        <td><span class="tag cyan">對話</span></td>
+        <td><strong>我們正在聊的內容</strong><br>關掉視窗就消失，下次重來</td>
+        <td>你現在問我問題，我回答你<br>你關掉終端機再打開，我不記得上一次講什麼</td>
+      </tr>
+      <tr>
+        <td><span class="tag rose">工具</span></td>
+        <td><strong>我的手和腳</strong><br>實際去執行事情的程式</td>
+        <td>terminal → 執行指令、修改檔案<br>web → 上網查資料<br>file → 讀寫檔案</td>
+      </tr>
+      <tr>
+        <td><span class="tag emerald">Profile</span></td>
+        <td><strong>我的分身</strong><br>完全獨立，各有各的記憶和技能</td>
+        <td>晴子（default）跟網站機器人（website）<br>是同一個 Hermes 程式的不同設定檔</td>
+      </tr>
+    </table>
+
+    <div class="note">
+      <strong>💡 一句話總結：</strong><br>
+      記憶 = 我永遠記得你的事<br>
+      技能 = 我知道我有這些能力<br>
+      對話 = 我們現在在聊什麼（關掉就沒了）<br>
+      工具 = 我實際去做事的程式<br>
+      Profile = 我的不同版本，可以切換
+    </div>
+  </div>
+
+  <!-- 為什麼網站不用開新機器人 -->
+  <div class="card">
+    <h2>那為什麼不用切到網站機器人？</h2>
+    <table class="table">
+      <tr>
+        <th style="width:25%">問題</th>
+        <th style="width:75%">答案</th>
+      </tr>
+      <tr>
+        <td>記憶會爆嗎？</td>
+        <td><strong>不會。</strong>記憶只有 2,200 字上限，我已經把網站細節移走了。現在只放你的生活資訊。</td>
+      </tr>
+      <tr>
+        <td>技能會太多嗎？</td>
+        <td><strong>原本會，但已經解決了。</strong>72 個技能 → 25 個，少掉 65%。那些用不到的（ML、GitHub、smart home 等）都移到 disabled 資料夾了。</td>
+      </tr>
+      <tr>
+        <td>做網站時會讀到不相關的記憶嗎？</td>
+        <td><strong>不會。</strong>網站知識我改成用 skill 存，需要做的時候才載入，不做網站時不佔記憶。</td>
+      </tr>
+      <tr>
+        <td>那網站機器人還有用嗎？</td>
+        <td><strong>備用而已。</strong>哪天你覺得網站討論把生活對話洗版了，可以切過去用。但日常不需要。</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 建議的工作流程 -->
+  <div class="card">
+    <h2>建議你之後的使用方式</h2>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:16px;">
+      <div style="background:#1e293b; border-radius:8px; padding:20px;">
+        <div style="font-size:24px; margin-bottom:8px;">☀️</div>
+        <h3 style="font-size:15px; color:#22d3ee; margin-bottom:8px;">日常</h3>
+        <p style="font-size:13px; color:#94a3b8; line-height:1.7;">直接在終端機或晴子 Telegram 問我<br>
+        「今天行程？」<br>
+        「明天要做什麼？」<br>
+        「提醒我明天下午要美甲」</p>
+      </div>
+      <div style="background:#1e293b; border-radius:8px; padding:20px;">
+        <div style="font-size:24px; margin-bottom:8px;">🔧</div>
+        <h3 style="font-size:15px; color:#22d3ee; margin-bottom:8px;">做網站</h3>
+        <p style="font-size:13px; color:#94a3b8; line-height:1.7;">也在這裡跟我說<br>
+        「幫我改首頁的商業攤位」<br>
+        「Vol.7 遊客須知的票價要更新」<br>
+        「幫我開新活動 vol8 的頁面」</p>
+      </div>
+    </div>
+    <div style="background:rgba(34,211,238,0.08); border:1px solid rgba(34,211,238,0.2); border-radius:8px; padding:16px; margin-top:16px; font-size:13px; color:#94a3b8; line-height:1.7;">
+      <strong style="color:#22d3ee;">📌 總之：</strong>不用切來切去，都在這裡跟我說就好。我現在夠快了，不用擔心記憶或技能的問題。
+    </div>
+  </div>
+</div>
+</body>
+</html>
