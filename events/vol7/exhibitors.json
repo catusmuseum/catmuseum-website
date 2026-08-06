@@ -1,6 +1,6 @@
 {
-  "total": 71,
-  "updated": "2026-08-06T18:45:13.262906+08:00",
+  "total": 72,
+  "updated": "2026-08-06T19:13:15.420723+08:00",
   "commercial": [
     {
       "category": "特邀商業",
@@ -488,6 +488,16 @@
       "category": "一般",
       "name": "ぽりめた。",
       "url": "https://nearbycard.com/card?id=2a4ca2facbf2feb0f4a8c5306d0d39b9",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
+      "category": "一般",
+      "name": "為閒置找新家",
+      "url": "https://www.facebook.com/media/set/?set=a.2923926041176798&type=3&locale=zh_TW",
       "description": "",
       "facebook": "",
       "instagram": "",
@@ -1170,6 +1180,16 @@
       "category": "一般",
       "name": "ぽりめた。",
       "url": "https://nearbycard.com/card?id=2a4ca2facbf2feb0f4a8c5306d0d39b9",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
+      "category": "一般",
+      "name": "為閒置找新家",
+      "url": "https://www.facebook.com/media/set/?set=a.2923926041176798&type=3&locale=zh_TW",
       "description": "",
       "facebook": "",
       "instagram": "",
