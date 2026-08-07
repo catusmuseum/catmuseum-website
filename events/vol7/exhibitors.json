@@ -1,6 +1,6 @@
 {
-  "total": 72,
-  "updated": "2026-08-06T19:13:15.420723+08:00",
+  "total": 73,
+  "updated": "2026-08-07T20:10:28.395264+08:00",
   "commercial": [
     {
       "category": "特邀商業",
@@ -505,6 +505,16 @@
       "sort": 999
     },
     {
+      "category": "一般",
+      "name": "月碧璽·夢境靈域",
+      "url": "https://www.instagram.com/moon_tourmaline?igsh=ODZqZjZteWIzNHF6&utm_source=qr",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
       "category": "早鳥一般",
       "name": "迷你蛋",
       "url": "https://www.plurk.com/s/u/nagoberry",
@@ -536,7 +546,7 @@
     },
     {
       "category": "早鳥一般",
-      "name": "甘味汽水鋪",
+      "name": "甘味汽水舖",
       "url": "https://www.plurk.com/kongappend",
       "description": "",
       "facebook": "",
@@ -1197,6 +1207,16 @@
       "sort": 999
     },
     {
+      "category": "一般",
+      "name": "月碧璽·夢境靈域",
+      "url": "https://www.instagram.com/moon_tourmaline?igsh=ODZqZjZteWIzNHF6&utm_source=qr",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
       "category": "早鳥一般",
       "name": "迷你蛋",
       "url": "https://www.plurk.com/s/u/nagoberry",
@@ -1228,7 +1248,7 @@
     },
     {
       "category": "早鳥一般",
-      "name": "甘味汽水鋪",
+      "name": "甘味汽水舖",
       "url": "https://www.plurk.com/kongappend",
       "description": "",
       "facebook": "",
