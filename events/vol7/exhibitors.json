@@ -1,6 +1,6 @@
 {
-  "total": 75,
-  "updated": "2026-08-13T18:06:28.208449+00:00",
+  "total": 77,
+  "updated": "2026-08-13T18:07:35.466789+00:00",
   "commercial": [
     {
       "category": "特邀商業",
@@ -36,6 +36,16 @@
       "category": "商業",
       "name": "米希娜娜",
       "url": "https://www.instagram.com/milkynana.077",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
+      "category": "商業",
+      "name": "累累測試",
+      "url": "累累",
       "description": "",
       "facebook": "",
       "instagram": "",
@@ -528,6 +538,16 @@
       "category": "一般",
       "name": "串串織造所",
       "url": "www.threads.com/@chuanhsu0414?hl=zh-tw",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
+      "category": "一般",
+      "name": "超累",
+      "url": "超累",
       "description": "",
       "facebook": "",
       "instagram": "",
@@ -1247,6 +1267,16 @@
       "sort": 999
     },
     {
+      "category": "一般",
+      "name": "超累",
+      "url": "超累",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
       "category": "早鳥一般",
       "name": "迷你蛋",
       "url": "https://www.plurk.com/s/u/nagoberry",
@@ -1500,6 +1530,16 @@
       "category": "商業",
       "name": "米希娜娜",
       "url": "https://www.instagram.com/milkynana.077",
+      "description": "",
+      "facebook": "",
+      "instagram": "",
+      "plurk": "",
+      "sort": 999
+    },
+    {
+      "category": "商業",
+      "name": "累累測試",
+      "url": "累累",
       "description": "",
       "facebook": "",
       "instagram": "",
