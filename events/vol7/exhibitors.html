@@ -185,7 +185,7 @@
 // 更新 Sheets → 網站自動更新（上線時 CSV 即時，本機需跑同步腳本）
 // ============================================================
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRWOUsW30k5ZPGRrjTLLygM-1Em0Bp4SPMCaNwFng7Zlng1UDWrjwDL4DlBtJWuLV3wsopCf3Ct29su/pub?gid=1742573447&single=true&output=csv';
-const JSON_URL = './exhibitors.json';
+const JSON_URL = './exhibitors.json?v=' + Date.now();
 
 document.addEventListener('DOMContentLoaded', function () {
   // 先試本機 JSON（無 CORS 問題），失敗就試 CSV
