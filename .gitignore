@@ -5,3 +5,7 @@ node_modules/
 
 # 圖片已上傳到免費圖床
 images/
+
+# 安全：防止 API key 檔案被意外 commit
+.env
+.env*
