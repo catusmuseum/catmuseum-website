@@ -263,13 +263,18 @@ function renderCommercial(list) {
     return;
   }
   el.innerHTML = list.map(function (b) {
+    var logoHtml = b.logo_url
+      ? '<img src="' + esc(b.logo_url) + '" alt="' + esc(b.name) + '" style="width:100%;height:100%;object-fit:cover;">'
+      : '<span style="color:var(--color-text-light);font-size:12px;">Logo</span>';
+    var nameHtml = b.url
+      ? '<h3><a href="' + esc(b.url) + '" target="_blank" style="color:var(--color-primary);text-decoration:none;">' + esc(b.name) + '</a></h3>'
+      : '<h3>' + esc(b.name) + '</h3>';
+    var descHtml = b.description
+      ? '<p class="brand-desc">' + esc(b.description) + '</p>'
+      : '<p class="brand-desc">品牌介紹撰寫中，敬請期待～</p>';
     return '<div class="brand-card">' +
-      '<div class="brand-logo" style="background:var(--color-bg-alt);">' +
-        '<span style="color:var(--color-text-light);">品牌 Logo</span>' +
-      '</div>' +
-      '<h3>' + esc(b.name) + '</h3>' +
-      '<p class="brand-desc">' + (b.description ? esc(b.description) : '品牌介紹撰寫中，敬請期待～') + '</p>' +
-    '</div>';
+      '<div class="brand-logo" style="background:var(--color-bg-alt);overflow:hidden;">' + logoHtml + '</div>' +
+      nameHtml + descHtml + '</div>';
   }).join('');
 }
 
@@ -280,9 +285,15 @@ function renderGrid(list) {
     return;
   }
   el.innerHTML = list.map(function (b) {
+    var logoHtml = b.logo_url
+      ? '<img src="' + esc(b.logo_url) + '" alt="' + esc(b.name) + '" style="width:100%;height:100%;object-fit:cover;">'
+      : '🏪';
+    var nameHtml = b.url
+      ? '<a href="' + esc(b.url) + '" target="_blank" style="color:var(--color-primary);text-decoration:none;">' + esc(b.name) + '</a>'
+      : '<span class="vendor-name">' + esc(b.name) + '</span>';
     return '<div class="vendor-item">' +
-      '<div class="mini-logo">🏪</div>' +
-      '<span class="vendor-name">' + esc(b.name) + '</span>' +
+      '<div class="mini-logo">' + logoHtml + '</div>' +
+      '<span class="vendor-name">' + nameHtml + '</span>' +
     '</div>';
   }).join('');
 }
