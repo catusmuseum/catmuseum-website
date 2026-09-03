@@ -16,7 +16,7 @@
       "category": "特邀商業",
       "name": "星辰羊驛館",
       "url": "https://www.plurk.com/starsstorytelling",
-      "description": "協力贊助",
+      "description": "販售棉花娃衣服，主要製作有在玩的尺寸，謝謝大家愛戴。",
       "facebook": "",
       "instagram": "",
       "plurk": "",
@@ -38,11 +38,12 @@
       "category": "商業",
       "name": "朵莉之家",
       "url": "https://www.instagram.com/madamedolly_official?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
-      "description": "",
+      "description": "朵莉之家 Welcome To Dolly's House 電影宣傳",
       "facebook": "",
       "instagram": "",
       "plurk": "",
-      "sort": 999
+      "sort": 999,
+      "logo_url": "https://drive.google.com/open?id=1L2DQrMBu0Iaq-2QbGh20kiW2ffl6t_BC"
     }
   ],
   "general": [
@@ -1498,7 +1499,7 @@
       "category": "特邀商業",
       "name": "星辰羊驛館",
       "url": "https://www.plurk.com/starsstorytelling",
-      "description": "協力贊助",
+      "description": "販售棉花娃衣服，主要製作有在玩的尺寸，謝謝大家愛戴。",
       "facebook": "",
       "instagram": "",
       "plurk": "",
@@ -1520,11 +1521,12 @@
       "category": "商業",
       "name": "朵莉之家",
       "url": "https://www.instagram.com/madamedolly_official?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw==",
-      "description": "",
+      "description": "朵莉之家 Welcome To Dolly's House 電影宣傳",
       "facebook": "",
       "instagram": "",
       "plurk": "",
-      "sort": 999
+      "sort": 999,
+      "logo_url": "https://drive.google.com/open?id=1L2DQrMBu0Iaq-2QbGh20kiW2ffl6t_BC"
     }
   ]
 }

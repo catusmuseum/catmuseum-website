@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抽獎與贊助品牌專區 - Vol.7 台中場 - 貓太太的珍物館</title>
+<meta name="description" content="貓太太的珍物館 Vol.7 抽獎活動與贊助品牌一覽。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/style.css">
+<style>
+/* ===== 通用 ===== */
+.raffle-page h2 { font-size: 34px; font-family: var(--font-heading); }
+.raffle-page h3 { font-size: 24px; font-family: var(--font-heading); color: var(--color-primary); margin-bottom: 16px; }
+.raffle-page .section { margin: 50px 0; }
+
+/* ===== 早鳥大禮：投影片 + 文字對照 ===== */
+.grand-prize-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.slideshow-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+}
+.grand-slides { display: flex; transition: transform 0.4s ease; }
+.grand-slide { min-width: 100%; }
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: none;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--color-heading);
+  z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+}
+.slide-btn:hover { background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+.slide-prev { left: 8px; }
+.slide-next { right: 8px; }
+.slide-dots {
+  position: absolute;
+  bottom: 8px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 6px; z-index: 2;
+}
+.slide-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer; border: none;
+}
+.slide-dot.active { background: white; }
+.prize-text .prize-item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.prize-text .prize-item:last-child { border-bottom: none; }
+.prize-text .sponsor-name {
+  font-family: var(--font-nav);
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.prize-text .prize-desc { font-size: 15px; line-height: 1.6; color: var(--color-text); }
+.early-badge {
+  display: inline-block;
+  background: var(--color-primary);
+  color: white;
+  font-family: var(--font-nav);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+/* ===== 抽獎券介紹圖 ===== */
+.raffle-ticket-img { text-align: center; margin: 30px 0; }
+.raffle-ticket-img img { max-width: 100%; border-radius: 4px; border: 1px solid var(--color-border); }
+
+/* ===== 贊助品牌區塊 ===== */
+.sponsor-block {
+  margin: 30px 0;
+  padding: 30px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+.sponsor-block .sponsor-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.sponsor-block .sponsor-logo { text-align: center; }
+.sponsor-block .sponsor-logo img {
+  width: 100%; max-width: 160px;
+  border-radius: 4px; border: 1px solid var(--color-border);
+  background: #f9f9f9;
+}
+.sponsor-block .sponsor-name-link {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-nav);
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.sponsor-block .sponsor-name-link:hover { text-decoration: underline; }
+.ps-wrap {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  max-width: 520px;
+}
+.ps-slides { display: flex; transition: transform 0.4s ease; }
+.ps-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  align-items: center;
+  box-sizing: border-box;
+}
+.ps-slide img { width: 100%; border-radius: 4px; border: 1px solid var(--color-border); }
+.ps-info { font-size: 15px; line-height: 1.6; }
+.ps-info .prize-label {
+  font-family: var(--font-nav);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ps-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.8);
+  border: none;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-heading);
+  z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+}
+.ps-btn:hover { background: white; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+.ps-prev { left: 4px; }
+.ps-next { right: 4px; }
+.ps-dots {
+  position: absolute;
+  bottom: 4px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 4px; z-index: 2;
+}
+.ps-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer; border: none;
+}
+.ps-dot.active { background: white; }
+
+@media (max-width: 768px) {
+  .grand-prize-layout { grid-template-columns: 1fr; }
+  .sponsor-block .sponsor-layout { grid-template-columns: 1fr; }
+  .sponsor-block .sponsor-logo img { max-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../../index.html" class="site-title">貓太太的珍物館</a>
+  <button class="nav-toggle" onclick="document.querySelector('.main-nav').classList.toggle('open')" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+    <nav class="main-nav">
+    <a href="../../index.html">首頁</a>
+    <a href="index.html" class="active">Vol.7 台中場</a>
+    <a href="location-map.html">品牌櫥窗</a>
+<a href="../../vendor/index.html">攤商專區</a>
+    <a href="../../gallery/index.html">活動回顧</a>
+    <a href="../../about/index.html">關於我們</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page raffle-page">
+
+    <div style="text-align:center;padding:30px 0 10px;">
+      <h2>抽獎與贊助品牌專區</h2>
+      <p style="font-size:18px;color:var(--color-primary);margin-top:8px;">Vol.7 台中場 · 2026.9.25</p>
+    </div>
+
+    <!-- ===== 早鳥抽獎券專屬：活動大禮 ===== -->
+    <section class="section">
+      <span class="early-badge">✦ 早鳥抽獎券專屬</span>
+      <h3>早鳥專屬禮</h3>
+      <p style="font-size:15px;color:var(--color-text-light);margin:0 0 20px;">
+        感謝各位參與貓太太的珍物館 Vol.7 台中場！貓太太與夥伴們準備了許多好禮，給來參與活動的同好們，一起接收好手氣 (╯✧∇✧)╯
+      </p>
+      <p style="font-size:14px;color:var(--color-text);margin:0 0 24px;">
+        早鳥票有專屬大禮、也可以參加一般票的抽獎，還有雙人、團購等不同的優惠價，同好們快揪上親朋好友一起參與吧！
+      </p>
+
+                                                                                                                                                                                                                                                                                                                                                                                          <!-- BEGIN:GRAND_PRIZE_LAYOUT -->
+      <div class="grand-prize-layout">
+        <!-- 投影片左側 -->
+        <div class="slideshow-wrap" id="grandSlideshow">
+          <div class="grand-slides" id="grandSlides">
+            <div class="grand-slide">
+                          <div style="width:100%;aspect-ratio:1/1;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:14px;">
+                            圖片<br>（待更新）
+                          </div>
+                        </div>
+            <div class="grand-slide">
+                          <div style="width:100%;aspect-ratio:1/1;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:14px;">
+                            圖片<br>（待更新）
+                          </div>
+                        </div>
+            <div class="grand-slide">
+                          <img src="https://drive.google.com/thumbnail?id=19OdCjUi4vl-sxiSLzqyPoDqWl2xNsrPc&amp;sz=w1000" alt="兔兔安眠曲10CM" style="width:100%;display:block;">
+                        </div>
+            <div class="grand-slide">
+                          <div style="width:100%;aspect-ratio:1/1;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:14px;">
+                            圖片<br>（待更新）
+                          </div>
+                        </div>          </div>
+          <button class="slide-btn slide-prev" onclick="changeGrand(-1)">‹</button>
+          <button class="slide-btn slide-next" onclick="changeGrand(1)">›</button>
+          <div class="slide-dots">
+            <span class="slide-dot active" onclick="goGrand(0)"></span>
+            <span class="slide-dot" onclick="goGrand(1)"></span>
+            <span class="slide-dot" onclick="goGrand(2)"></span>
+            <span class="slide-dot" onclick="goGrand(3)"></span>
+          </div>
+        </div>
+
+        <!-- 文字右側 -->
+                <div class="prize-text">
+                  <div class="prize-item">
+<div class="sponsor-name"><a href="https://www.plurk.com/u/zuuu_1029" target="_blank" style="color:var(--color-primary);text-decoration:none;">紫心工作室</a> 協力贊助 · 📍攤位 商 2</div>
+                    <div class="prize-desc">待更新</div>
+                  </div>
+                  <div class="prize-item">
+<div class="sponsor-name"><a href="https://dlod2015.easy.co/" target="_blank" style="color:var(--color-primary);text-decoration:none;">偶夢</a> 協力贊助 · 📍攤位 商 1</div>
+                    <div class="prize-desc">待更新</div>
+                  </div>
+                  <div class="prize-item">
+<div class="sponsor-name"><a href="https://www.plurk.com/starsstorytelling" target="_blank" style="color:var(--color-primary);text-decoration:none;">星辰羊驛館</a> 協力贊助 · 📍攤位 商 3</div>
+                    <div class="prize-desc">兔兔安眠曲10CM</div>
+                  </div>
+                  <div class="prize-item">
+<div class="sponsor-name"><a href="https://www.instagram.com/madamedolly_official?utm_source=ig_web_button_share_sheet&amp;igsi=ZDNlZDc0MzIxNw==" target="_blank" style="color:var(--color-primary);text-decoration:none;">朵莉之家</a> 協力贊助 · 📍攤位 商 4, 商 5</div>
+                    <div class="prize-desc">待更新</div>
+                  </div>
+                </div>
+      </div>
+      <!-- END:GRAND_PRIZE_LAYOUT -->
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== 抽獎券介紹 + 圖片 ===== -->
+    <section class="section">
+      <h3>抽獎方式介紹</h3>
+      <div class="raffle-ticket-img">
+        <img src="https://iili.io/CgkvKEg.jpg" alt="抽獎券介紹">
+      </div>
+      <ul class="event-detail-list" style="margin-top:20px;">
+        <li><span class="label">抽獎券投入</span>11:00 ~ 13:50</li>
+        <li><span class="label">抽獎時間</span>14:00（一）&amp; 15:00（二）</li>
+        <li><span class="label">參加資格</span>凡購買活動門票即可獲得抽獎券</li>
+        <li><span class="label">領獎方式</span>得獎人請至本部領取獎項，唱名三次或得獎人放棄獎項，將重新抽選</li>
+      </ul>
+      <p style="font-size:14px;color:var(--color-text-light);margin-top:10px;">
+        ※ 本次抽獎券分為「早鳥抽獎券」&amp;「抽獎券」兩種，請注意要投入到對應的抽獎箱內。若投錯視為作廢。
+      </p>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ===== 贊助品牌們 ===== -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <!-- BEGIN:SPONSOR_SECTION -->
+        <section class="section">
+      <h3>贊助品牌與獎項</h3>
+      <p style="font-size:15px;color:var(--color-text-light);margin:0 0 10px;">
+        感謝各贊助攤商的熱情支持！您的贊助不僅讓活動更加豐富，也讓來場的民眾有機會帶回心儀的珍物。
+      </p>
+      <p style="font-size:14px;color:var(--color-text-light);margin:0 0 30px;">
+        贊助品牌持續招募中，名單將陸續更新。
+      </p>
+            <!-- Aphrodite＊芙樂園 -->
+            <div class="sponsor-block" id="sponsor-4">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=13I-oMarU5G98q0tcX9piMvZojmEJxhxu&amp;sz=w1000" alt="Aphrodite＊芙樂園">
+                  <a href="https://www.facebook.com/sherylBJDmakeup" class="sponsor-name-link" target="_blank">Aphrodite＊芙樂園</a>
+                </div>
+                <div class="ps-wrap" id="ps4">
+                  <div class="ps-slides" id="ps4Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=17M9pARyShSpBOggoSly4JKJGZT9oXT5H&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 二次元樹脂眼</div>
+                        <p style="font-size:15px;margin:0;">現場攤位認選現貨眼珠 18-20mm</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：82</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1cb7yFQ7qE4l4mtHQJ4KqokgqzGJPZBfy&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 二次元樹脂眼</div>
+                        <p style="font-size:15px;margin:0;">現場攤位認選現貨眼珠 18-20mm</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：82</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：82</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps4',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps4',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps4',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps4',1)"></span>
+                    <span class="ps-dot" onclick="goPS('ps4',2)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ぽりめた。 -->
+            <div class="sponsor-block" id="sponsor-5">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=1BWhiazzhcHBf1d_Ar6Qq9sW2tvseJqPI&amp;sz=w1000" alt="ぽりめた。">
+                  <a href="https://nearbycard.com/card?id=2a4ca2facbf2feb0f4a8c5306d0d39b9" class="sponsor-name-link" target="_blank">ぽりめた。</a>
+                </div>
+                <div class="ps-wrap" id="ps5">
+                  <div class="ps-slides" id="ps5Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1yMEw24cPrQCdYFnuWofL-AkzGxs0ZcIX&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ Catch棒set</div>
+                        <p style="font-size:15px;margin:0;">娃用撮影補助棒</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：5-6</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：5-6</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps5',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps5',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps5',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps5',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 布想縫～手作 -->
+            <div class="sponsor-block" id="sponsor-6">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=173nIbKjwAqiNw7oG4SLVQj6SSBeakO4r&amp;sz=w1000" alt="布想縫～手作">
+                  <a href="https://www.plurk.com/u/S_willow" class="sponsor-name-link" target="_blank">布想縫～手作</a>
+                </div>
+                <div class="ps-wrap" id="ps6">
+                  <div class="ps-slides" id="ps6Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1iDeFeat166TU-tiFLktKM0AhTQrcdrUK&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 1/12娃可用吊籃椅 黑色支架款式</div>
+                        <p style="font-size:15px;margin:0;">OB11、1/12娃可坐的手編吊籃椅，黑色支架款式</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：58</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：58</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps6',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps6',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps6',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps6',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 花汐牧歌 IDYLL DOLL -->
+            <div class="sponsor-block" id="sponsor-7">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=1-J-CnwgEURVebNXQAAip9lbI22ATgtVT&amp;sz=w1000" alt="花汐牧歌 IDYLL DOLL">
+                  <a href="https://www.facebook.com/share/1D2qrUmZ3B/" class="sponsor-name-link" target="_blank">花汐牧歌 IDYLL DOLL</a>
+                </div>
+                <div class="ps-wrap" id="ps7">
+                  <div class="ps-slides" id="ps7Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1pUeSECiqDv-VpYgrn_L8VSwBVn69oUoZ&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 牧歌小羊｜雲咩☁️Clomea（初代）</div>
+                        <p style="font-size:15px;margin:0;">雲咩，是誕生於花汐國度的雲物之一，
+柔軟、安靜，像一朵輕輕落下的雲。
+
+牠們以不同的樣貌存在著，
+有些仍在風裡飄浮，有些則來到你身邊，
+成為可以被抱著、陪伴日常的小小存在。
+
+每一隻雲咩皆為手工製作，
+保留手作痕跡與獨特性之一。
+都是獨一無二的居民。</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：4</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1oRciKOeoNI3yLbwAU9xHkr_lITBEWfuV&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 蛋四｜Dansi</div>
+                        <p style="font-size:15px;margin:0;">在花汐有一種蛋蛋貓倍受居民喜愛，
+牠的名叫做——「蛋四」 
+因為……牠有……4顆蛋蛋。臉上兩顆屁股兩顆。
+
+蛋四是手工一針一線縫製而成，
+每一隻的表情與細節都略有不同，
+都是獨一無二的小生命。</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：4</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：4</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps7',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps7',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps7',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps7',1)"></span>
+                    <span class="ps-dot" onclick="goPS('ps7',2)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 蘋蒂蝶島 -->
+            <div class="sponsor-block" id="sponsor-8">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=1LZ3MwdN_jMkfNrbdT4FJT_nrTd2dfIfy&amp;sz=w1000" alt="蘋蒂蝶島">
+                  <a href="https://www.instagram.com/appleislandfalling" class="sponsor-name-link" target="_blank">蘋蒂蝶島</a>
+                </div>
+                <div class="ps-wrap" id="ps8">
+                  <div class="ps-slides" id="ps8Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1o-LKvGfR5kqiyemqDuXS6ZoZNd5NVATi&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 粉色碎花圍兜</div>
+                        <p style="font-size:15px;margin:0;">10cm棉花娃、MMMM娃可用圍兜</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：42</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=12mxaLJmQffOUoKUM4XM40DmT9-4EveCz&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 粉色領結</div>
+                        <p style="font-size:15px;margin:0;">10cm棉花娃用領結</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：42</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：42</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps8',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps8',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps8',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps8',1)"></span>
+                    <span class="ps-dot" onclick="goPS('ps8',2)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 賣可愛 -->
+            <div class="sponsor-block" id="sponsor-9">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=1ThJvJ--6vLhi_q1nSj7EJga8b4euV6rt&amp;sz=w1000" alt="賣可愛">
+                  <a href="https://www.instagram.com/jellyninachibi" class="sponsor-name-link" target="_blank">賣可愛</a>
+                </div>
+                <div class="ps-wrap" id="ps9">
+                  <div class="ps-slides" id="ps9Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=19WKB2O47-7tqtHl_zveXeZ-hCGjD5-Py&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 傻傻小狗</div>
+                        <p style="font-size:15px;margin:0;">你認識的狗狗裡總是有一隻
+讓你搞不清楚他腦袋瓜裡到底裝了什麼</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：37</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1L5EVpuqqMpiy_rZNilD7rBcW8LYa8bey&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 節慶小熊</div>
+                        <p style="font-size:15px;margin:0;">在節慶裡面負責確保牛奶跟餅乾都有被吃光光的奶油熊</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：37</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：37</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps9',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps9',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps9',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps9',1)"></span>
+                    <span class="ps-dot" onclick="goPS('ps9',2)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 魔女的貓 -->
+            <div class="sponsor-block" id="sponsor-10">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.facebook.com/wscat2021/" class="sponsor-name-link" target="_blank">魔女的貓</a>
+                </div>
+                <div class="ps-wrap" id="ps10">
+                  <div class="ps-slides" id="ps10Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：77-78</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：77-78</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps10',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps10',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps10',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps10',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 鱷魚恐龍工作室 -->
+            <div class="sponsor-block" id="sponsor-11">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=1_7FJDC7ReOCJLzyd5zZ75utv80j_rCza&amp;sz=w1000" alt="鱷魚恐龍工作室">
+                  <a href="https://www.myacg.com.tw/seller_market.php?seller=357351" class="sponsor-name-link" target="_blank">鱷魚恐龍工作室</a>
+                </div>
+                <div class="ps-wrap" id="ps11">
+                  <div class="ps-slides" id="ps11Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1Uu50Xq9e7DGvTgOfIj_Zydza9ElYBsNz&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 沙灘草帽X2</div>
+                        <p style="font-size:15px;margin:0;">很適合度假風的娃用草帽</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：17-18</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：17-18</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps11',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps11',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps11',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps11',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 嵐猫の花園 -->
+            <div class="sponsor-block" id="sponsor-12">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.facebook.com/61558875081783/" class="sponsor-name-link" target="_blank">嵐猫の花園</a>
+                </div>
+                <div class="ps-wrap" id="ps12">
+                  <div class="ps-slides" id="ps12Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：55</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：55</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps12',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps12',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps12',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps12',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 格子貓娃舖 -->
+            <div class="sponsor-block" id="sponsor-13">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.facebook.com/share/1G7GtQjwrw/" class="sponsor-name-link" target="_blank">格子貓娃舖</a>
+                </div>
+                <div class="ps-wrap" id="ps13">
+                  <div class="ps-slides" id="ps13Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：49-50</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：49-50</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps13',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps13',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps13',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps13',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 橘子寶寶手作舖 -->
+            <div class="sponsor-block" id="sponsor-14">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=11kkPgbAmX8MGsvTpk9W94aCluAvOi5WI&amp;sz=w1000" alt="橘子寶寶手作舖">
+                  <a href="https://www.instagram.com/orange_baby_handmade?igsh=aW94ZjEyeDJvMGt2&amp;utm_source=qr" class="sponsor-name-link" target="_blank">橘子寶寶手作舖</a>
+                </div>
+                <div class="ps-wrap" id="ps14">
+                  <div class="ps-slides" id="ps14Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1yCJ25Pg0YYU5FLjAk2lTxUvaMLTkhcJY&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 藍花款-小熊帽</div>
+                        <p style="font-size:15px;margin:0;">尺寸適用於10公分棉花娃相近娃</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：25-26</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1DPXqX-N4ErBbMuzG9foa0CyatcVV5rxH&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 紅花款-小熊帽</div>
+                        <p style="font-size:15px;margin:0;">尺寸適用於10公分棉花娃相近娃</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：25-26</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：25-26</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps14',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps14',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps14',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps14',1)"></span>
+                    <span class="ps-dot" onclick="goPS('ps14',2)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 甘味汽水舖 -->
+            <div class="sponsor-block" id="sponsor-15">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.plurk.com/kongappend" class="sponsor-name-link" target="_blank">甘味汽水舖</a>
+                </div>
+                <div class="ps-wrap" id="ps15">
+                  <div class="ps-slides" id="ps15Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：93-94</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：93-94</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps15',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps15',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps15',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps15',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 美美姬小姐 -->
+            <div class="sponsor-block" id="sponsor-16">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.instagram.com/missmaggie_bjd/" class="sponsor-name-link" target="_blank">美美姬小姐</a>
+                </div>
+                <div class="ps-wrap" id="ps16">
+                  <div class="ps-slides" id="ps16Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：29-30</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：29-30</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps16',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps16',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps16',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps16',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 老雁小坊 -->
+            <div class="sponsor-block" id="sponsor-17">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.facebook.com/people/%E8%80%81%E9%9B%81%E5%B0%8F%E5%9D%8A/100064287512194/?paipv=0&amp;eav=AfbehYmTLKK9sK_2nmMsOxEppRuheFvwyGUKsh7x6t_79GexcNcCV0BNgsn-FqBJ4kQ&amp;_rdr" class="sponsor-name-link" target="_blank">老雁小坊</a>
+                </div>
+                <div class="ps-wrap" id="ps17">
+                  <div class="ps-slides" id="ps17Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：51-52</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：51-52</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps17',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps17',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps17',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps17',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 花非花 -->
+            <div class="sponsor-block" id="sponsor-18">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="http://instagram.com/_afith_" class="sponsor-name-link" target="_blank">花非花</a>
+                </div>
+                <div class="ps-wrap" id="ps18">
+                  <div class="ps-slides" id="ps18Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：85-86</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：85-86</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps18',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps18',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps18',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps18',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 迷你小啾的手創窩 -->
+            <div class="sponsor-block" id="sponsor-19">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.facebook.com/share/17QbKeq6Vc/" class="sponsor-name-link" target="_blank">迷你小啾的手創窩</a>
+                </div>
+                <div class="ps-wrap" id="ps19">
+                  <div class="ps-slides" id="ps19Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：31-32</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：31-32</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps19',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps19',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps19',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps19',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 托嬰中心 -->
+            <div class="sponsor-block" id="sponsor-0">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="我要二手出清，稍後email給官方" class="sponsor-name-link" target="_blank">托嬰中心</a>
+                </div>
+                <div class="ps-wrap" id="ps0">
+                  <div class="ps-slides" id="ps0Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：57</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：57</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps0',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps0',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps0',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps0',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 小魔女與夢之扉 -->
+            <div class="sponsor-block" id="sponsor-0">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.facebook.com/lwdd2017/" class="sponsor-name-link" target="_blank">小魔女與夢之扉</a>
+                </div>
+                <div class="ps-wrap" id="ps0">
+                  <div class="ps-slides" id="ps0Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：83-84</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：83-84</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps0',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps0',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps0',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps0',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 寶島手作 -->
+            <div class="sponsor-block" id="sponsor-0">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.plurk.com/potowanbo" class="sponsor-name-link" target="_blank">寶島手作</a>
+                </div>
+                <div class="ps-wrap" id="ps0">
+                  <div class="ps-slides" id="ps0Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：8</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：8</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps0',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps0',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps0',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps0',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Lolo | Eden rose closet -->
+            <div class="sponsor-block" id="sponsor-0">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.plurk.com/Eden_Rose" class="sponsor-name-link" target="_blank">Lolo | Eden rose closet</a>
+                </div>
+                <div class="ps-wrap" id="ps0">
+                  <div class="ps-slides" id="ps0Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：16</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：16</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps0',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps0',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps0',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps0',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ICExCAT -->
+            <div class="sponsor-block" id="sponsor-0">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.facebook.com/icexcat" class="sponsor-name-link" target="_blank">ICExCAT</a>
+                </div>
+                <div class="ps-wrap" id="ps0">
+                  <div class="ps-slides" id="ps0Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：44</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：44</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps0',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps0',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps0',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps0',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Eden rosé -->
+            <div class="sponsor-block" id="sponsor-0">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.plurk.com/Eden_Rose" class="sponsor-name-link" target="_blank">Eden rosé</a>
+                </div>
+                <div class="ps-wrap" id="ps0">
+                  <div class="ps-slides" id="ps0Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：40</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：40</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps0',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps0',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps0',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps0',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 迷你蛋 -->
+            <div class="sponsor-block" id="sponsor-20">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <div style="width:160px;height:160px;background:#f0f0f0;border:1px solid var(--color-border);border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:var(--color-text-light);font-size:13px;">Logo<br>（待更新）</div>
+                  <a href="https://www.plurk.com/s/u/nagoberry" class="sponsor-name-link" target="_blank">迷你蛋</a>
+                </div>
+                <div class="ps-wrap" id="ps20">
+                  <div class="ps-slides" id="ps20Slides">
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">圖片<br>（待更新）</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：23-24</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：23-24</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps20',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps20',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps20',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps20',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 偶夢x人偶夢想館 -->
+            <div class="sponsor-block" id="sponsor-21">
+              <div class="sponsor-layout">
+                <div class="sponsor-logo">
+                  <img src="https://drive.google.com/thumbnail?id=1WoT-lAyECgAmg7rfJYlxQejYoePlf2Sy&amp;sz=w1000" alt="偶夢x人偶夢想館">
+                  <a href="https://dlod2015.easy.co/" class="sponsor-name-link" target="_blank">偶夢x人偶夢想館</a>
+                </div>
+                <div class="ps-wrap" id="ps21">
+                  <div class="ps-slides" id="ps21Slides">
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1spzgKaTYhcpIpoRGZUyl2HcEZKbVzlIJ&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 灰色西裝套組</div>
+                        <p style="font-size:15px;margin:0;">OB11尺寸，內容物：襯衫、馬甲背心、西裝外套、褲子、領帶、領結各一</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：商 1</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=1qFrkF7OkWWAzTbCAgpz9H2uUsjzbJojw&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 橘紅色厚底鞋</div>
+                        <p style="font-size:15px;margin:0;">四分小腳尺寸</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：商 1</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <img src="https://drive.google.com/thumbnail?id=17JWTf4mtLs3LiBGZ0onhtNaWJqdx5Y-n&amp;sz=w1000" alt="獎品圖片">
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 飾品配件組</div>
+                        <p style="font-size:15px;margin:0;">3分尺寸，耳環、髮箍、眼鏡、皮帶、項鍊各一</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：商 1</p>
+                      </div>
+                    </div>
+                    <div class="ps-slide">
+                      <div style="background:#f5f5f5;border-radius:4px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:var(--color-text-light);font-size:12px;">更多獎項準備中</div>
+                      <div class="ps-info">
+                        <div class="prize-label">✦ 贊助獎項</div>
+                        <p style="font-size:15px;margin:0;">獎項內容準備中</p>
+                        <p style="font-size:13px;color:var(--color-text-light);margin:6px 0 0;">攤位位置：商 1</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="ps-btn ps-prev" onclick="changePS('ps21',-1)">‹</button>
+                  <button class="ps-btn ps-next" onclick="changePS('ps21',1)">›</button>
+                  <div class="ps-dots">
+                    <span class="ps-dot active" onclick="goPS('ps21',0)"></span>
+                    <span class="ps-dot" onclick="goPS('ps21',1)"></span>
+                    <span class="ps-dot" onclick="goPS('ps21',2)"></span>
+                    <span class="ps-dot" onclick="goPS('ps21',3)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+                        <!-- END:SPONSOR_SECTION -->
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+                </section>
+
+    <div class="divider"></div>
+
+    <p style="margin-top:30px;">
+      <a href="index.html" class="btn">← 返回活動詳情</a>
+      <a href="visitor.html" class="btn" style="margin-left:10px;">遊客須知</a>
+    </p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>© Catus's Doll Museum 貓太太的珍物館</p>
+  <p style="margin-top:8px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,0.4);">
+    <a href="https://www.facebook.com/p/%E8%B2%93%E5%A4%AA%E5%A4%AA%E7%9A%84%E7%8F%8D%E7%89%A9%E9%A4%A8Catuss-Doll-Museum-100092874142253/" target="_blank">FB</a> · <a href="https://www.instagram.com/catusmuseum" target="_blank">IG</a> · <a href="https://www.plurk.com/catusmuseum" target="_blank">Plurk</a> · <a href="../../about/index.html">聯絡我們</a>
+  </p>
+</footer>
+
+<script>
+// ===== 早鳥大禮投影片 =====
+var grandCurrent = 0;
+function changeGrand(dir) { goGrand(grandCurrent + dir); }
+function goGrand(n) {
+  var total = document.querySelectorAll('#grandSlideshow .slide-dot').length;
+  if (n < 0) n = total - 1;
+  if (n >= total) n = 0;
+  grandCurrent = n;
+  document.getElementById('grandSlides').style.transform = 'translateX(-' + (n * 100) + '%)';
+  var dots = document.querySelectorAll('#grandSlideshow .slide-dot');
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === n); });
+}
+
+// ===== 贊助品牌投影片 (通用) =====
+var psState = {};
+function changePS(id, dir) {
+  if (!psState[id]) psState[id] = { current: 0 };
+  goPS(id, psState[id].current + dir);
+}
+function goPS(id, n) {
+  if (!psState[id]) psState[id] = { current: 0 };
+  var el = document.getElementById(id);
+  var total = el.querySelectorAll('.ps-dot').length;
+  if (n < 0) n = total - 1;
+  if (n >= total) n = 0;
+  psState[id].current = n;
+  el.querySelector('.ps-slides').style.transform = 'translateX(-' + (n * 100) + '%)';
+  var dots = el.querySelectorAll('.ps-dot');
+  dots.forEach(function(d, i) { d.classList.toggle('active', i === n); });
+}
+
+// Active nav
+document.querySelectorAll('.main-nav a').forEach(function(l) {
+  if (l.href === window.location.href) l.classList.add('active');
+});
+</script>
+</body>
+</html>
