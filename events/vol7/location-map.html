@@ -9,12 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Gentium+Basic&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../css/style.css">
 <style>
-/* ── 品牌櫥窗（位置圖） ── */
-.page-map {
-  max-width: 1100px;
-}
-
-/* 位置圖容器 */
+.page-map { max-width: 1100px; }
 .map-container {
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -24,124 +19,42 @@
   text-align: center;
 }
 .map-container img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+  max-width: 100%; height: auto; display: block; margin: 0 auto;
 }
 .map-placeholder {
-  padding: 60px 20px;
-  color: var(--color-text-light);
-  font-size: 16px;
-  background: var(--color-bg-alt);
-  border-radius: 4px;
+  padding: 60px 20px; color: var(--color-text-light);
+  font-size: 16px; background: var(--color-bg-alt); border-radius: 4px;
 }
-
-/* 搜尋列 */
-.search-bar {
-  margin: 20px 0;
-  position: relative;
-}
+.search-bar { margin: 20px 0; }
 .search-bar input {
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 16px;
+  width: 100%; padding: 12px 16px; font-size: 16px;
   font-family: var(--font-body);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  background: var(--color-white);
-  color: var(--color-text);
-  outline: none;
-  transition: border-color 0.2s;
+  border: 1px solid var(--color-border); border-radius: 4px;
+  background: var(--color-white); color: var(--color-text);
+  outline: none; transition: border-color 0.2s;
 }
-.search-bar input:focus {
-  border-color: var(--color-primary);
-}
-.search-bar input::placeholder {
-  color: var(--color-text-light);
-}
-
-/* 表格 */
-.booth-table-wrap {
-  overflow-x: auto;
-}
+.search-bar input:focus { border-color: var(--color-primary); }
+.search-bar input::placeholder { color: var(--color-text-light); }
+.booth-table-wrap { overflow-x: auto; }
 .booth-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0 0 30px;
-  font-size: 15px;
+  width: 100%; border-collapse: collapse; margin: 0 0 30px; font-size: 15px;
 }
 .booth-table th {
-  background: var(--color-heading);
-  color: white;
-  font-family: var(--font-nav);
-  font-size: 12px;
-  letter-spacing: 1px;
-  padding: 12px 14px;
-  text-align: left;
-  white-space: nowrap;
+  background: var(--color-heading); color: white;
+  font-family: var(--font-nav); font-size: 12px; letter-spacing: 1px;
+  padding: 12px 14px; text-align: left; white-space: nowrap;
 }
 .booth-table td {
-  padding: 10px 14px;
-  border-bottom: 1px solid var(--color-border);
+  padding: 10px 14px; border-bottom: 1px solid var(--color-border);
   vertical-align: top;
 }
-.booth-table tr:hover {
-  background: var(--color-bg-alt);
-}
-.booth-table a {
-  color: var(--color-primary-dark);
-  font-weight: 500;
-}
-.booth-table a:hover {
-  text-decoration: underline;
-}
-
-/* 商業攤位區背景 */
-.booth-table.commercial td {
-  background: #f6f2ef;
-}
-.booth-table.commercial tr:hover td {
-  background: #efe9e4;
-}
-
-/* 隱藏 row */
-.row-hidden {
-  display: none !important;
-}
-
-/* 表格分類標題 */
-.section-header td {
-  background: var(--color-bg-alt) !important;
-  font-family: var(--font-nav);
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: var(--color-heading);
-  padding: 10px 14px;
-  font-weight: 600;
-}
-.section-header:hover td {
-  background: var(--color-bg-alt) !important;
-}
-
-.text-muted {
-  color: var(--color-text-light);
-}
-
+.booth-table tr:hover { background: var(--color-bg-alt); }
+.booth-table.commercial td { background: #f6f2ef; }
+.booth-table.commercial tr:hover td { background: #efe9e4; }
+.row-hidden { display: none !important; }
+.text-muted { color: var(--color-text-light); }
 @media (max-width: 768px) {
-  .booth-table-wrap {
-    overflow-x: auto;
-  }
-  .booth-table th,
-  .booth-table td {
-    padding: 8px 10px;
-    font-size: 14px;
-  }
-  .stats-bar {
-    gap: 12px;
-    padding: 10px 14px;
-    font-size: 14px;
-  }
+  .booth-table th, .booth-table td { padding: 8px 10px; font-size: 14px; }
 }
 </style>
 </head>
@@ -169,7 +82,6 @@
     <p style="font-size:17px;color:var(--color-primary);margin-bottom:4px;">Vol.7 台中場</p>
     <p style="font-size:15px;color:var(--color-text-light);margin-bottom:20px;">攤位配置與品牌一覽，使用搜尋功能快速找到感興趣的品牌 ✨</p>
 
-    <!-- 位置圖 -->
     <section class="section" style="padding-top:0;">
       <h3>🗺️ 會場配置圖</h3>
       <div class="map-container" id="map-container">
@@ -181,653 +93,473 @@
 
     <div class="divider"></div>
 
-    <!-- 攤位一覽表 -->
     <section class="section">
       <h3>📋 攤位一覽表</h3>
       <p style="font-size:15px;color:var(--color-text-light);">使用搜尋功能快速找到感興趣的品牌</p>
 
-      <!-- 搜尋 -->
       <div class="search-bar">
         <input type="text" id="search-input" placeholder="🔍 搜尋攤位編號、品牌名稱、類別或品項…" oninput="filterTable()">
       </div>
 
-      <!-- 商業攤位表格 -->
-      <h4 style="margin: 20px 0 10px; font-family: var(--font-nav); font-size: 13px; letter-spacing: 1px; color: var(--color-primary-dark);">✨ 商業攤位</h4>
+      <h4 style="margin:20px 0 10px;font-family:var(--font-nav);font-size:13px;letter-spacing:1px;color:var(--color-primary-dark);">✨ 商業攤位</h4>
       <div class="booth-table-wrap">
         <table class="booth-table commercial" id="commercial-table">
-          <thead>
-            <tr>
-              <th>攤位編號</th>
-              <th>品牌名稱</th>
-              <th>類別</th>
-              <th>品項</th>
-            </tr>
-          </thead>
+          <thead><tr><th>攤位編號</th><th>品牌名稱</th><th>類別</th><th>品項</th></tr></thead>
           <tbody>
 <tr>
-          <td data-label="攤位編號">商1</td>
-          <td data-label="品牌名稱">偶夢</td>
-          <td data-label="類別">自製公仔</td>
-          <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 代理:娃體, 其他：</td>
-        </tr>
+  <td data-label="攤位編號">商 1</td>
+  <td data-label="品牌名稱">偶夢</td>
+  <td data-label="類別">自製公仔</td>
+  <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 代理:娃體, 其他：</td>
+</tr>
 <tr>
-          <td data-label="攤位編號">商2</td>
-          <td data-label="品牌名稱">紫心工作室</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 其他</td>
-        </tr>
+  <td data-label="攤位編號">商 2</td>
+  <td data-label="品牌名稱">紫心工作室</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 其他</td>
+</tr>
 <tr>
-          <td data-label="攤位編號">商3</td>
-          <td data-label="品牌名稱">星辰羊驛館</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 其他：</td>
-        </tr>
+  <td data-label="攤位編號">商 3</td>
+  <td data-label="品牌名稱">星辰羊驛館</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 其他：</td>
+</tr>
 <tr>
-          <td data-label="攤位編號">商5</td>
-          <td data-label="品牌名稱">朵莉之家 Welcome To Dolly&#39;s House</td>
-          <td data-label="類別"></td>
-          <td data-label="品項">朵莉之家 Welcome To Dolly&#39;s House 電影宣傳</td>
-        </tr>
+  <td data-label="攤位編號">商 5</td>
+  <td data-label="品牌名稱">朵莉之家 Welcome To Dolly&#39;s House</td>
+  <td data-label="類別"></td>
+  <td data-label="品項">朵莉之家 Welcome To Dolly&#39;s House 電影宣傳</td>
+</tr>
 
           </tbody>
         </table>
       </div>
 
-      <!-- 一般攤位表格 -->
-      <h4 style="margin: 20px 0 10px; font-family: var(--font-nav); font-size: 13px; letter-spacing: 1px; color: var(--color-heading);">📦 一般攤位</h4>
+      <h4 style="margin:20px 0 10px;font-family:var(--font-nav);font-size:13px;letter-spacing:1px;color:var(--color-heading);">📦 一般攤位</h4>
       <div class="booth-table-wrap">
         <table class="booth-table" id="regular-table">
-          <thead>
-            <tr>
-              <th>攤位編號</th>
-              <th>品牌名稱</th>
-              <th>類別</th>
-              <th>品項</th>
-            </tr>
-          </thead>
+          <thead><tr><th>攤位編號</th><th>品牌名稱</th><th>類別</th><th>品項</th></tr></thead>
           <tbody>
 <tr>
-          <td data-label="攤位編號">1</td>
-          <td data-label="品牌名稱">糖貓貓</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">自製娃體, 服飾配件, 家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">2</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">3</td>
-          <td data-label="品牌名稱">Shizu</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">4</td>
-          <td data-label="品牌名稱">花汐牧歌 IDYLL DOLL</td>
-          <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
-          <td data-label="品項">自製娃體</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">5</td>
-          <td data-label="品牌名稱">ぽりめた。</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">6</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">7</td>
-          <td data-label="品牌名稱">青菜簽</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">8</td>
-          <td data-label="品牌名稱">寶島手作</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">9</td>
-          <td data-label="品牌名稱">蒔光貳號</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">10</td>
-          <td data-label="品牌名稱">芙芙手作</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">11</td>
-          <td data-label="品牌名稱">沐棉下</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">12</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">13</td>
-          <td data-label="品牌名稱">樹懶毛</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">14</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">15</td>
-          <td data-label="品牌名稱">joujou</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">16</td>
-          <td data-label="品牌名稱">Lolo | Eden rose closet</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">自製娃體, 服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">17</td>
-          <td data-label="品牌名稱">鱷魚恐龍工作室</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">18</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">19</td>
-          <td data-label="品牌名稱">Kiramori</td>
-          <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
-          <td data-label="品項">自製娃體</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">20</td>
-          <td data-label="品牌名稱">小森氈作</td>
-          <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
-          <td data-label="品項">自製娃體</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">21</td>
-          <td data-label="品牌名稱">良誠沒謹</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">22</td>
-          <td data-label="品牌名稱">雨閣</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 代理娃相關周邊配件, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">23</td>
-          <td data-label="品牌名稱">迷你蛋</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">24</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">25</td>
-          <td data-label="品牌名稱">橘子寶寶手作舖</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">26</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">27</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">28</td>
-          <td data-label="品牌名稱">串串織造所</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">29</td>
-          <td data-label="品牌名稱">美美姬小姐</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">30</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">31</td>
-          <td data-label="品牌名稱">迷你小啾的手創窩</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">32</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">33</td>
-          <td data-label="品牌名稱">大份蔬菜</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">34</td>
-          <td data-label="品牌名稱">糸糸島</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">35</td>
-          <td data-label="品牌名稱">taimini棉花娃衣</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">36</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">37</td>
-          <td data-label="品牌名稱">賣可愛</td>
-          <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
-          <td data-label="品項">服飾配件, 其他：</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">38</td>
-          <td data-label="品牌名稱">米你世界</td>
-          <td data-label="類別">微縮模型</td>
-          <td data-label="品項">家俱、擺設小物, 代理:娃相關周邊配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">39</td>
-          <td data-label="品牌名稱">你家缺蔬菜水果嗎?</td>
-          <td data-label="類別">微縮模型</td>
-          <td data-label="品項">家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">40</td>
-          <td data-label="品牌名稱">Eden rosé</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">自製娃體, 服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">41</td>
-          <td data-label="品牌名稱">MUMI.C</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">42</td>
-          <td data-label="品牌名稱">蘋蒂蝶島</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">43</td>
-          <td data-label="品牌名稱">織否織否</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">44</td>
-          <td data-label="品牌名稱">ICExCAT</td>
-          <td data-label="類別">DD</td>
-          <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">45</td>
-          <td data-label="品牌名稱">出清養娃</td>
-          <td data-label="類別">DD</td>
-          <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">46</td>
-          <td data-label="品牌名稱">鈴恩手作</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">47</td>
-          <td data-label="品牌名稱">梨花手作</td>
-          <td data-label="類別">OB11</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">48</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">49</td>
-          <td data-label="品牌名稱">格子貓娃舖</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">50</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">51</td>
-          <td data-label="品牌名稱">老雁小坊</td>
-          <td data-label="類別">DD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">52</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">53</td>
-          <td data-label="品牌名稱">貓晏的小舖</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">54</td>
-          <td data-label="品牌名稱">宿原僎個人</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">55</td>
-          <td data-label="品牌名稱">嵐猫の花園</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">56</td>
-          <td data-label="品牌名稱">【嵐屋】</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">自製娃體, 服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">57</td>
-          <td data-label="品牌名稱">托嬰中心</td>
-          <td data-label="類別">OB11</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">58</td>
-          <td data-label="品牌名稱">布想縫～手作</td>
-          <td data-label="類別">OB11</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">59</td>
-          <td data-label="品牌名稱">ꕤ哈嚕米手作ꕤ</td>
-          <td data-label="類別">OB11</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">60</td>
-          <td data-label="品牌名稱">楓牛革</td>
-          <td data-label="類別">OB11</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">61</td>
-          <td data-label="品牌名稱">Lemon Basil 攝影•手作工作室</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">62</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">63</td>
-          <td data-label="品牌名稱">Cat Love Doll</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">64</td>
-          <td data-label="品牌名稱">最上天工作室</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">65</td>
-          <td data-label="品牌名稱">熊樂町二手店</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件, 代理娃體</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">66</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">67</td>
-          <td data-label="品牌名稱">Bitch</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">68</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">69</td>
-          <td data-label="品牌名稱">手創館</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">70</td>
-          <td data-label="品牌名稱">Birdy’s BJD 日記與手作日常</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">71</td>
-          <td data-label="品牌名稱">千尋慕谷</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">72</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">73</td>
-          <td data-label="品牌名稱">笨笨x呆呆兵團總部</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">74</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">75</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">76</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">77</td>
-          <td data-label="品牌名稱">魔女的貓</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">78</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">79</td>
-          <td data-label="品牌名稱">FabriBJD 法布里</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">80</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">81</td>
-          <td data-label="品牌名稱">Crepuscular Rays</td>
-          <td data-label="類別">DD</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">82</td>
-          <td data-label="品牌名稱">Aphrodite＊芙樂園</td>
-          <td data-label="類別">DD</td>
-          <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">83</td>
-          <td data-label="品牌名稱">小魔女與夢之扉</td>
-          <td data-label="類別">DD</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">84</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">85</td>
-          <td data-label="品牌名稱">花非花</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">86</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">87</td>
-          <td data-label="品牌名稱">娃箱大爆炸</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">88</td>
-          <td data-label="品牌名稱">QmawQBooK</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 其他</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">89</td>
-          <td data-label="品牌名稱">為閒置找新家</td>
-          <td data-label="類別">BJD</td>
-          <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">90</td>
-          <td data-label="品牌名稱">ㄧ隅微生工作室</td>
-          <td data-label="類別">微縮模型</td>
-          <td data-label="品項">家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">91</td>
-          <td data-label="品牌名稱">Angel element 天使元件</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">92</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">93</td>
-          <td data-label="品牌名稱">甘味汽水舖</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">自製娃體</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">94</td>
-          <td data-label="品牌名稱"><span class="text-muted">&mdash;</span></td>
-          <td data-label="類別"></td>
-          <td data-label="品項"><span class="text-muted">&mdash;</span></td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">95</td>
-          <td data-label="品牌名稱">黑貓小商行</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件, 家俱、擺設小物</td>
-        </tr>
-<tr>
-          <td data-label="攤位編號">96</td>
-          <td data-label="品牌名稱">微光編織屋</td>
-          <td data-label="類別">棉花娃娃</td>
-          <td data-label="品項">服飾配件</td>
-        </tr>
+  <td data-label="攤位編號">1-2</td>
+  <td data-label="品牌名稱">糖貓貓</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">自製娃體, 服飾配件, 家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">3</td>
+  <td data-label="品牌名稱">Shizu</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">4</td>
+  <td data-label="品牌名稱">花汐牧歌 IDYLL DOLL</td>
+  <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
+  <td data-label="品項">自製娃體</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">5-6</td>
+  <td data-label="品牌名稱">ぽりめた。</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">7</td>
+  <td data-label="品牌名稱">青菜簽</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">8</td>
+  <td data-label="品牌名稱">寶島手作</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">9</td>
+  <td data-label="品牌名稱">蒔光貳號</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">10</td>
+  <td data-label="品牌名稱">芙芙手作</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">11-12</td>
+  <td data-label="品牌名稱">沐棉下</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">13-14</td>
+  <td data-label="品牌名稱">樹懶毛</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">15</td>
+  <td data-label="品牌名稱">joujou</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">16</td>
+  <td data-label="品牌名稱">Lolo | Eden rose closet</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">自製娃體, 服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">17-18</td>
+  <td data-label="品牌名稱">鱷魚恐龍工作室</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">19</td>
+  <td data-label="品牌名稱">Kiramori</td>
+  <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
+  <td data-label="品項">自製娃體</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">20</td>
+  <td data-label="品牌名稱">小森氈作</td>
+  <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
+  <td data-label="品項">自製娃體</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">21</td>
+  <td data-label="品牌名稱">良誠沒謹</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">22</td>
+  <td data-label="品牌名稱">雨閣</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 代理娃相關周邊配件, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">23-24</td>
+  <td data-label="品牌名稱">迷你蛋</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">25-26</td>
+  <td data-label="品牌名稱">橘子寶寶手作舖</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">28</td>
+  <td data-label="品牌名稱">串串織造所</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">29-30</td>
+  <td data-label="品牌名稱">美美姬小姐</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">31-32</td>
+  <td data-label="品牌名稱">迷你小啾的手創窩</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">33</td>
+  <td data-label="品牌名稱">大份蔬菜</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">34</td>
+  <td data-label="品牌名稱">糸糸島</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">35-36</td>
+  <td data-label="品牌名稱">taimini棉花娃衣</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">37</td>
+  <td data-label="品牌名稱">賣可愛</td>
+  <td data-label="類別">羊毛氈、陶瓷...等自製娃</td>
+  <td data-label="品項">服飾配件, 其他：</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">38</td>
+  <td data-label="品牌名稱">米你世界</td>
+  <td data-label="類別">微縮模型</td>
+  <td data-label="品項">家俱、擺設小物, 代理:娃相關周邊配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">39</td>
+  <td data-label="品牌名稱">你家缺蔬菜水果嗎?</td>
+  <td data-label="類別">微縮模型</td>
+  <td data-label="品項">家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">40</td>
+  <td data-label="品牌名稱">Eden rosé</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">自製娃體, 服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">41</td>
+  <td data-label="品牌名稱">MUMI.C</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">42</td>
+  <td data-label="品牌名稱">蘋蒂蝶島</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">43</td>
+  <td data-label="品牌名稱">織否織否</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">44</td>
+  <td data-label="品牌名稱">ICExCAT</td>
+  <td data-label="類別">DD</td>
+  <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">45</td>
+  <td data-label="品牌名稱">出清養娃</td>
+  <td data-label="類別">DD</td>
+  <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">46</td>
+  <td data-label="品牌名稱">鈴恩手作</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">47-48</td>
+  <td data-label="品牌名稱">梨花手作</td>
+  <td data-label="類別">OB11</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">49-50</td>
+  <td data-label="品牌名稱">格子貓娃舖</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">51-52</td>
+  <td data-label="品牌名稱">老雁小坊</td>
+  <td data-label="類別">DD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">53</td>
+  <td data-label="品牌名稱">貓晏的小舖</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">54</td>
+  <td data-label="品牌名稱">宿原僎個人</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">55</td>
+  <td data-label="品牌名稱">嵐猫の花園</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">56</td>
+  <td data-label="品牌名稱">【嵐屋】</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">自製娃體, 服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">57</td>
+  <td data-label="品牌名稱">托嬰中心</td>
+  <td data-label="類別">OB11</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">58</td>
+  <td data-label="品牌名稱">布想縫～手作</td>
+  <td data-label="類別">OB11</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">59</td>
+  <td data-label="品牌名稱">ꕤ哈嚕米手作ꕤ</td>
+  <td data-label="類別">OB11</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">60</td>
+  <td data-label="品牌名稱">楓牛革</td>
+  <td data-label="類別">OB11</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">61-62</td>
+  <td data-label="品牌名稱">Lemon Basil 攝影•手作工作室</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">63</td>
+  <td data-label="品牌名稱">Cat Love Doll</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">64</td>
+  <td data-label="品牌名稱">最上天工作室</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">65-66</td>
+  <td data-label="品牌名稱">熊樂町二手店</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物, 眼珠、假髮、鞋子、飾品等配件, 代理娃體</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">67-68</td>
+  <td data-label="品牌名稱">Bitch</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">69</td>
+  <td data-label="品牌名稱">手創館</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">70</td>
+  <td data-label="品牌名稱">Birdy’s BJD 日記與手作日常</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">71-72</td>
+  <td data-label="品牌名稱">千尋慕谷</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">73-74</td>
+  <td data-label="品牌名稱">笨笨x呆呆兵團總部</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">77-78</td>
+  <td data-label="品牌名稱">魔女的貓</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">79-80</td>
+  <td data-label="品牌名稱">FabriBJD 法布里</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">81</td>
+  <td data-label="品牌名稱">Crepuscular Rays</td>
+  <td data-label="類別">DD</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">82</td>
+  <td data-label="品牌名稱">Aphrodite＊芙樂園</td>
+  <td data-label="類別">DD</td>
+  <td data-label="品項">眼珠、假髮、鞋子、飾品等配件, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">83-84</td>
+  <td data-label="品牌名稱">小魔女與夢之扉</td>
+  <td data-label="類別">DD</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">85-86</td>
+  <td data-label="品牌名稱">花非花</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">87</td>
+  <td data-label="品牌名稱">娃箱大爆炸</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">88</td>
+  <td data-label="品牌名稱">QmawQBooK</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 其他</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">89</td>
+  <td data-label="品牌名稱">為閒置找新家</td>
+  <td data-label="類別">BJD</td>
+  <td data-label="品項">服飾配件, 眼珠、假髮、鞋子、飾品等配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">90</td>
+  <td data-label="品牌名稱">ㄧ隅微生工作室</td>
+  <td data-label="類別">微縮模型</td>
+  <td data-label="品項">家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">91-92</td>
+  <td data-label="品牌名稱">Angel element 天使元件</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">93-94</td>
+  <td data-label="品牌名稱">甘味汽水舖</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">自製娃體</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">95</td>
+  <td data-label="品牌名稱">黑貓小商行</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件, 家俱、擺設小物</td>
+</tr>
+<tr>
+  <td data-label="攤位編號">96</td>
+  <td data-label="品牌名稱">微光編織屋</td>
+  <td data-label="類別">棉花娃娃</td>
+  <td data-label="品項">服飾配件</td>
+</tr>
 
           </tbody>
         </table>
       </div>
 
-      <p style="margin-top: 16px; font-size: 14px; color: var(--color-text-light);">
+      <p style="margin-top:16px;font-size:14px;color:var(--color-text-light);">
         ⚠️ 資料來源：攤位位置圖以最新公告為準
       </p>
     </section>
@@ -847,41 +579,27 @@
 </footer>
 
 <script>
-// ── 搜尋過濾 ──
 function filterTable() {
-  var query = document.getElementById('search-input').value.trim().toLowerCase();
-  var tables = ['commercial-table', 'regular-table'];
-  tables.forEach(function(tableId) {
-    var table = document.getElementById(tableId);
-    if (!table) return;
-    var rows = table.querySelectorAll('tbody tr');
-    rows.forEach(function(row) {
-      if (row.classList.contains('section-header')) return;
-      var text = row.textContent.toLowerCase();
-      if (!query || text.indexOf(query) !== -1) {
-        row.classList.remove('row-hidden');
-      } else {
-        row.classList.add('row-hidden');
-      }
+  var q = document.getElementById("search-input").value.trim().toLowerCase();
+  ["commercial-table","regular-table"].forEach(function(id) {
+    var t = document.getElementById(id);
+    if (!t) return;
+    t.querySelectorAll("tbody tr").forEach(function(r) {
+      var show = !q || r.textContent.toLowerCase().indexOf(q) !== -1;
+      r.classList.toggle("row-hidden", !show);
     });
   });
 }
-
-// Active nav link
-document.querySelectorAll('.main-nav a').forEach(function(l) {
-  if (l.href === window.location.href) l.classList.add('active');
+document.querySelectorAll(".main-nav a").forEach(function(l) {
+  if (l.href === window.location.href) l.classList.add("active");
 });
-
-// $('#map-container') — 預留給後來插入位置圖圖片用
-// 若需動態插入圖片，呼叫：setMapImage('https://...')
 function setMapImage(url) {
-  var container = document.getElementById('map-container');
-  var placeholder = document.getElementById('map-placeholder');
-  if (placeholder) placeholder.remove();
-  var img = document.createElement('img');
-  img.src = url;
-  img.alt = 'Vol.7 台中場攤位位置圖';
-  container.appendChild(img);
+  var c = document.getElementById("map-container");
+  var p = document.getElementById("map-placeholder");
+  if (p) p.remove();
+  var i = document.createElement("img");
+  i.src = url; i.alt = "Vol.7 台中場攤位位置圖";
+  c.appendChild(i);
 }
 </script>
 </body>
